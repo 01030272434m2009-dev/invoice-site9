@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام المتابعة الخارجي الصارم 2026</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        :root {
+            --bg-main: #f0f4f8;
+            --bg-card: #ffffff;
+            --primary: #4a90e2;
+            --accent: #ff7675;
+            --text-dark: #2c3e50;
+            --text-muted: #7f8c8d;
+            --purple: #9b59b6;
+            --green: #2ecc71;
+            --shadow: 0 20px 40px rgba(0,0,0,0.06);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 20px;
+            direction: rtl;
+        }
+
+        #lockScreen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 800px;
+            margin: 40px auto;
+            gap: 25px;
+        }
+
+        .main-title {
+            font-size: 26px;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .countdown-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            width: 100%;
+        }
+
+        .premium-timer {
+            background: var(--bg-card);
+            border-radius: 24px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            border-bottom: 5px solid var(--primary);
+        }
+        .premium-timer.final { border-color: var(--purple); }
+        
+        .timer-title { font-size: 14px; color: var(--text-muted); font-weight: bold; margin-bottom: 15px; }
+        
+        .timer-digits { display: flex; justify-content: center; gap: 12px; direction: ltr; }
+        .time-segment { background: #f8fafc; padding: 12px 18px; border-radius: 16px; border: 1px solid #edf2f7; min-width: 60px; }
+        .time-num { font-size: 28px; font-weight: 800; color: var(--text-dark); font-family: monospace; }
+        .time-label { font-size: 10px; color: var(--text-muted); margin-top: 3px; font-weight: bold; }
+
+        .btn-request {
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+            color: white; border: none; padding: 14px 25px; font-size: 14px; font-weight: bold;
+            border-radius: 30px; cursor: pointer; margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(74, 144, 226, 0.2);
+            transition: all 0.3s;
+        }
+        .btn-request:hover { transform: translateY(-2px); }
+
+        .btn-zone {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        #mainApp { display: none; max-width: 1100px; margin: 0 auto; animation: fadeIn 0.5s ease; }
+        .tracker-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(115px, 1fr)); gap: 15px; background: var(--bg-card); padding: 25px; border-radius: 24px; box-shadow: var(--shadow); }
+        .day-circle { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 50%; aspect-ratio: 1/1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 5px; box-sizing: border-box; font-weight: bold; }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+
+    <!-- شاشة العدادات والقفل الخارجية -->
+    <div id="lockScreen">
+        <div class="main-title">🔒 نظام المتابعة الخارجي الصارم</div>
+        <p style="color: var(--text-muted); text-align: center; margin: 0; max-width: 600px; font-size: 14px; line-height: 1.6;">
+            اضغط على الزر الأزرق بالأسفل أولاً للسماح بالنظام الخارجي، ثم يمكنك استخدام أزرار البروفا للتجربة الفورية.
+        </p>
+        
+        <button class="btn-request" onclick="requestNotificationPermission()">🔔 1. تفعيل واستقبال الإشعارات الخارجية</button>
+
+        <div class="countdown-grid">
+            <div class="premium-timer">
+                <div class="timer-title">⏳ المتبقي لانطلاق البرنامج رسميًا (1/8/2026)</div>
+                <div class="timer-digits">
+                    <div class="time-segment"><div class="time-num" id="p-day">00</div><div class="time-label">DAYS</div></div>
+                    <div class="time-segment"><div class="time-num" id="p-hour">00</div><div class="time-label">HRS</div></div>
+                    <div class="time-segment"><div class="time-num" id="p-min">00</div><div class="time-label">MINS</div></div>
+                </div>
+            </div>
+            <div class="premium-timer final">
+                <div class="timer-title">🏁 المتبقي على نهاية البرنامج بالكامل</div>
+                <div class="timer-digits">
+                    <div class="time-segment"><div class="time-num" id="f-day">00</div><div class="time-label">DAYS</div></div>
+                    <div class="time-segment"><div class="time-num" id="f-hour">00</div><div class="time-label">HRS</div></div>
+                    <div class="time-segment"><div class="time-num" id="f-min">00</div><div class="time-label">MINS</div></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="btn-zone">
+            <!-- بروفا 1: تجربة الإشعار اليومي السريع (تختفي للأبد) -->
+            <button class="btn-request" id="dailyTestBtn" style="background: linear-gradient(135deg, #2ecc71, #27ae60);" onclick="triggerDailyNotificationTest()">✉️ بروفا الإشعار اليومي السريع (مرة واحدة)</button>
+            
+            <!-- بروفا 2 الجديدة: تجربة فتح شاشة التقارير والدوائر لمدة ربع ساعة كاملة (تختفي للأبد) -->
+            <button class="btn-request" id="reportTestBtn" style="background: linear-gradient(135deg, var(--purple), #8e44ad);" onclick="triggerReportNotificationTest()">📊 بروفا شاشة التقارير والدوائر (مرة واحدة)</button>
+        </div>
+    </div>
+
+    <!-- لوحة التحكم والتقارير الكلية (مخفية تماماً وتفتح مؤقتاً عبر البروفا أو كل 5 أسابيع) -->
+    <div id="mainApp">
+        <div style="background:white; padding:25px; border-radius:24px; box-shadow:var(--shadow); margin-bottom:25px; text-align:center;">
+            <h2 style="color:var(--purple); margin:0;">🔓 شاشة التقارير والدوائر مفتوحة الآن</h2>
+            <p style="color:var(--text-muted); font-size:14px; margin-top:5px; font-weight: bold;">الوقت المتبقي لإعادة التشفير التلقائي والقفل: <span id="sessionTimer" style="color: var(--accent); font-size: 18px;">15:00</span></p>
+        </div>
+        <div class="tracker-grid" id="trackerGrid"></div>
+    </div>
+
+    <script>
+        const startDate = new Date(2026, 7, 1); 
+        const endDate = new Date(2027, 7, 1);   
+        const daysPerPeriod = 35;
+        let celebrationTriggered = false;
+
+        // التحقق من إخفاء أزرار البروفا المستهلكة للأبد
+        if (localStorage.getItem('daily_test_used') === 'true') document.getElementById('dailyTestBtn').classList.add('hidden');
+        if (localStorage.getItem('report_test_used') === 'true') document.getElementById('reportTestBtn').classList.add('hidden');
+
+        // تسجيل المحرك الخلفي
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js').then(reg => {
+                console.log('Service Worker Ready.');
+            }).catch(err => console.log('SW Error:', err));
+        }
+
+        function requestNotificationPermission() {
+            Notification.requestPermission().then(permission => {
+                if(permission === 'granted') {
+                    alert('✅ رائع! تم تفعيل وتأكيد استقبال الإشعارات بنجاح. يمكنك الآن تجربة أزرار البروفا.');
+                } else {
+                    alert('⚠️ يرجى الموافقة على إذن الإشعارات لكي تعمل الرسائل الخارجية على شاشة القفل.');
+                }
+            });
+        }
+
+        // 1. بروفا الإشعار اليومي المضمونة (تختفي للأبد)
+        function triggerDailyNotificationTest() {
+            localStorage.setItem('daily_test_used', 'true');
+            document.getElementById('dailyTestBtn').classList.add('hidden');
+            
+            if (Notification.permission === 'granted') {
+                navigator.serviceWorker.ready.then(reg => {
+                    reg.showNotification("📝 توثيق اليوم الحالي (بروفا)", {
+                        body: "اختر فئة إنجازك المالي لليوم مباشرة ليتم حفظها سرياً فوراً دون فتح البرنامج:",
+                        icon: "https://cdn-icons-png.flaticon.com/512/732/732200.png",
+                        badge: "https://cdn-icons-png.flaticon.com/512/732/732200.png",
+                        tag: "daily-input",
+                        requireInteraction: true,
+                        actions: [
+                            { action: 'record_500', title: '💰 فئة 500' },
+                            { action: 'record_300', title: '💰 فئة 300' }
+                        ]
+                    });
+                });
+            } else {
+                // حل بديل فوري للمتصفحات المحلية التي لم تفعل الإشعار الخارجي بعد
+                let score = prompt("الرجاء تفعيل زر الإشعارات الأزرق أولاً. للتجربة السريعة الآن، اكتب 500 أو 300:");
+                if(score) alert("تم الحفظ التجريبي بنجاح!");
+            }
+        }
+
+        // 2. بروفا شاشة التقارير والدوائر لمدة 15 دقيقة (تختفي للأبد)
+        function triggerReportNotificationTest() {
+            localStorage.setItem('report_test_used', 'true');
+            document.getElementById('reportTestBtn').classList.add('hidden');
+            
+            // فتح الجلسة مباشرة لمدة 15 دقيقة كاملة
+            let expiryTime = new Date().getTime() + (15 * 60 * 1000);
+            localStorage.setItem('external_session_expiry', expiryTime);
+            
+            renderCircles();
+            checkAccess();
+            
+            if (Notification.permission === 'granted') {
+                navigator.serviceWorker.ready.then(reg => {
+                    reg.showNotification("📊 تم فتح شاشة التقارير", {
+                        body: "لقد تم تنشيط لوحة التحكم والدوائر الآن بنجاح لمدة 15 دقيقة للمعاينة.",
+                        icon: "https://cdn-icons-png.flaticon.com/512/3306/3306612.png"
+                    });
+                });
+            }
+        }
+
+        function checkAccess() {
+            const now = new Date();
+            let hasAccess = false;
+
+            let sessionExpiry = localStorage.getItem('external_session_expiry');
+            if (sessionExpiry && now.getTime() < parseInt(sessionExpiry)) {
+                hasAccess = true;
+                let timeLeft = Math.ceil((parseInt(sessionExpiry) - now.getTime()) / 1000);
+                let minutes = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+                let seconds = (timeLeft % 60).toString().padStart(2, '0');
+                let timerElem = document.getElementById('sessionTimer');
+                if(timerElem) timerElem.innerText = `${minutes}:${seconds}`;
+            }
+
+            if (hasAccess) {
+                document.getElementById('mainApp').style.display = 'block';
+                document.getElementById('lockScreen').style.display = 'none';
+            } else {
+                document.getElementById('mainApp').style.display = 'none';
+                document.getElementById('lockScreen').style.display = 'flex';
+            }
+
+            updateTimers(now);
+        }
+
+        function updateTimers(now) {
+            let totalLeft = endDate - now;
+            if (totalLeft <= 0) {
+                if (!celebrationTriggered) { confetti(); celebrationTriggered = true; }
+            } else {
+                let d = Math.floor(totalLeft / (1000*60*60*24));
+                let h = Math.floor((totalLeft % (1000*60*60*24)) / (1000*60*60));
+                let m = Math.floor((totalLeft % (1000*60*60)) / (1000*60));
+                document.getElementById('f-day').innerText = d.toString().padStart(2, '0');
+                document.getElementById('f-hour').innerText = h.toString().padStart(2, '0');
+                document.getElementById('f-min').innerText = m.toString().padStart(2, '0');
+            }
+
+            let startLeft = startDate - now;
+            if (startLeft > 0) {
+                let d = Math.floor(startLeft / (1000*60*60*24));
+                let h = Math.floor((startLeft % (1000*60*60*24)) / (1000*60*60));
+                let m = Math.floor((startLeft % (1000*60*60)) / (1000*60));
+                document.getElementById('p-day').innerText = d.toString().padStart(2, '0');
+                document.getElementById('p-hour').innerText = h.toString().padStart(2, '0');
+                document.getElementById('p-min').innerText = m.toString().padStart(2, '0');
+            }
+        }
+
+        // بناء شاشة دوائر المتابعة الـ 35 يوماً الفخمة لعرضها بالتقارير
+        function renderCircles() {
+            const grid = document.getElementById('trackerGrid');
+            grid.innerHTML = '';
+            const weekDays = ['أحد', 'إثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة', 'سبت'];
+            
+            for (let i = 1; i <= daysPerPeriod; i++) {
+                const circle = document.createElement('div');
+                circle.className = 'day-circle';
+                circle.style.borderColors = 'var(--primary)';
+                circle.innerHTML = `
+                    <div style="font-size: 11px; color: var(--text-muted);">يوم</div>
+                    <div style="font-size: 18px; color: var(--primary);">${i}</div>
+                `;
+                grid.appendChild(circle);
+            }
+        }
+
+        setInterval(checkAccess, 1000);
+        checkAccess();
+    </script>
+</body>
+</html>
