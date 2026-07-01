@@ -14,9 +14,10 @@
             --glass-border: rgba(255, 255, 255, 0.4);
             --primary-gradient: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             --gold: #d4af37;
+            --gold-glow: rgba(212, 175, 55, 0.3);
+            --silver-glow: rgba(74, 144, 226, 0.25);
             --text-main: #1a2530;
             --text-muted: #5a6b7c;
-            --success: #2ed573;
         }
 
         body {
@@ -44,14 +45,11 @@
             max-width: 900px;
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
             text-align: center;
-            box-sizing: border-box;
-            animation: fadeIn 0.8s ease-out;
         }
 
         .main-title { font-size: 28px; font-weight: 900; color: #1e3c72; margin-bottom: 5px; }
         .subtitle { font-size: 14px; color: var(--text-muted); margin-bottom: 35px; }
 
-        /* العدادات التنازلية الملكية */
         .countdown-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -64,14 +62,12 @@
             border: 1px solid rgba(255, 255, 255, 0.6);
             border-radius: 24px;
             padding: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
         }
         .timer-title { font-size: 13px; color: var(--text-muted); font-weight: 700; margin-bottom: 12px; }
         .timer-digits { display: flex; justify-content: center; gap: 15px; direction: ltr; }
         .time-num { font-size: 32px; font-weight: 900; color: #1e3c72; line-height: 1; }
         .time-label { font-size: 10px; color: var(--text-muted); margin-top: 5px; font-weight: 600; }
 
-        /* الأزرار الاحترافية */
         .action-btn {
             background: var(--primary-gradient);
             color: white; border: none; padding: 14px 35px; font-size: 14px; font-weight: 700;
@@ -82,13 +78,12 @@
         .btn-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 25px; border-top: 1px solid rgba(255,255,255,0.25); padding-top: 25px; }
         .btn-secondary { background: rgba(255, 255, 255, 0.8); color: #1e3c72; border: 1px solid rgba(30, 60, 114, 0.15); font-size: 12px; padding: 10px 20px; }
 
-        /* 📊 لوحة التحكم والتقارير الفاخرة (تفتح مؤقتاً) */
-        #mainApp { display: none; width: 100%; max-width: 950px; animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        /* 📊 لوحة التحكم والتقارير الفاخرة */
+        #mainApp { display: none; width: 100%; max-width: 1150px; animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
         
-        /* كروت الإجماليات */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
             margin-bottom: 30px;
         }
@@ -100,30 +95,61 @@
         .stat-card.gold-border { border-bottom-color: var(--gold); }
         .stat-card.gold-border .stat-val { color: #b38f1d; }
 
-        /* الدوائر الاحترافية المقسمة أسابيع */
+        /* حاوية الأسابيع الفخمة */
         .weeks-container {
             background: rgba(255, 255, 255, 0.45); border: 1px solid var(--glass-border);
             padding: 30px; border-radius: 32px; box-shadow: 0 20px 40px rgba(0,0,0,0.03);
-            display: flex; flex-direction: column; gap: 25px;
+            display: flex; flex-direction: column; gap: 30px;
         }
         .week-row {
-            background: rgba(255, 255, 255, 0.6); padding: 20px; border-radius: 20px;
+            background: rgba(255, 255, 255, 0.6); padding: 25px; border-radius: 24px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.01);
         }
-        .week-title { font-size: 14px; font-weight: 700; color: #1e3c72; margin-bottom: 15px; text-align: right; border-right: 3px solid #1e3c72; padding-right: 10px; }
-        .circles-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px; }
+        .week-title { font-size: 15px; font-weight: 800; color: #1e3c72; margin-bottom: 20px; text-align: right; border-right: 4px solid #1e3c72; padding-right: 12px; }
         
-        @media (max-width: 600px) { .circles-grid { grid-template-columns: repeat(5, 1fr); } }
+        /* شبكة الدوائر التفاعلية المتجاوبة */
+        .circles-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 20px; }
+        
+        @media (max-width: 900px) { .circles-grid { grid-template-columns: repeat(4, 1fr); } }
+        @media (max-width: 500px) { .circles-grid { grid-template-columns: repeat(2, 1fr); } }
 
+        /* 🔴 تصميم الدائرة الفخم والكامل بالتفاصيل المطلوبة */
         .day-circle { 
-            background: white; border: 1px solid rgba(30, 60, 114, 0.1); border-radius: 50%; 
+            background: white; border: 1px solid rgba(30, 60, 114, 0.12); border-radius: 50%; 
             aspect-ratio: 1/1; display: flex; flex-direction: column; justify-content: center; align-items: center; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.02); transition: all 0.3s; font-weight: bold; cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); padding: 10px; box-sizing: border-box; text-align: center;
         }
-        .day-circle:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(30, 60, 114, 0.15); }
-        .circle-num { font-size: 16px; color: #1e3c72; font-weight: 800; }
-        .circle-score { font-size: 10px; color: var(--success); font-weight: 700; margin-top: -2px; }
         
+        /* 🏆 مؤشرات وتأثيرات الاختيار التنافسية الفخمة */
+        .circle-500 {
+            border: 2px solid var(--gold) !important;
+            background: linear-gradient(135deg, #ffffff 0%, #fffdf0 100%);
+            box-shadow: 0 10px 25px var(--gold-glow) !important;
+        }
+        .circle-500 .indicator-badge { background: var(--gold); color: white; }
+
+        .circle-300 {
+            border: 2px solid #4a90e2 !important;
+            background: linear-gradient(135deg, #ffffff 0%, #f4f8ff 100%);
+            box-shadow: 0 10px 25px var(--silver-glow) !important;
+        }
+        .circle-300 .indicator-badge { background: #4a90e2; color: white; }
+
+        .circle-empty {
+            background: rgba(0,0,0,0.02); border: 1px dashed rgba(0,0,0,0.15); opacity: 0.6;
+        }
+
+        /* المكونات الداخلية للدائرة لضمان التنظيم والشياكة */
+        .circle-day-name { font-size: 11px; font-weight: 700; color: var(--text-muted); }
+        .circle-main-num { font-size: 24px; font-weight: 900; color: #1e3c72; line-height: 1.1; margin: 2px 0; }
+        .circle-dates { font-size: 9px; font-weight: 600; color: #7f8c8d; line-height: 1.3; }
+        .circle-hijri { color: #b38f1d; font-weight: 700; }
+        
+        /* بادج المؤشر السفلي الصغير للقيمة الموثقة */
+        .indicator-badge {
+            font-size: 9px; font-weight: 800; padding: 2px 8px; border-radius: 10px; margin-top: 5px; background: #eee; color: #777;
+        }
+
         @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         .hidden { display: none !important; }
@@ -131,7 +157,7 @@
 </head>
 <body>
 
-    <!-- 🔒 الواجهة الملكية المقفلة -->
+    <!-- 🔒 الواجهة المقفلة المحمية -->
     <div id="lockScreen" class="glass-panel">
         <div class="main-title">🔒 نظام المتابعة المشفر والأمن</div>
         <div class="subtitle">تجرى كافة العمليات في الخلفية التلقائية لحفظ أقصى درجات السرية والخصوصية.</div>
@@ -157,39 +183,37 @@
         
         <button class="action-btn" onclick="requestNotificationPermission()">🔔 تفعيل نظام الإشعارات الخارجية</button>
         
-        <!-- منطقة تجارب البروفا (كل زر يختفي للأبد بعد نقرة واحدة) -->
         <div class="btn-group">
             <button class="action-btn btn-secondary" id="dailyTestBtn" onclick="triggerDailyNotificationTest()">✉️ بروفا الإشعار اليومي</button>
-            <button class="action-btn btn-secondary" id="reportTestBtn" onclick="triggerReportNotificationTest()">📊 بروفا لوحة التقارير والإجماليات</button>
+            <button class="action-btn btn-secondary" id="reportTestBtn" onclick="triggerReportNotificationTest()">📊 بروفا لوحة التقارير الكاملة</button>
             <button class="action-btn btn-secondary" id="periodEndBtn" onclick="triggerPeriodEndTest()">⚠️ بروفا إشعار الـ 5 أسابيع</button>
             <button class="action-btn btn-secondary" id="finalEndBtn" onclick="triggerFinalEndTest()">🏆 بروفا الإنتهاء الكامل</button>
         </div>
     </div>
 
-    <!-- 📊 لوحة التحكم الفاخرة (Dashboard) المحدثة بالكامل -->
+    <!-- 📊 لوحة التحكم الكلية المحدثة بالتواريخ والمؤشرات الفاخرة -->
     <div id="mainApp">
         <div style="text-align: center; margin-bottom: 25px;">
-            <h2 style="color:#1e3c72; margin:0; font-weight: 900;">📊 لوحة الإحصائيات الشاملة والتقارير</h2>
+            <h2 style="color:#1e3c72; margin:0; font-weight: 900;">📊 لوحة التحكم والإحصائيات والأيام التفصيلية</h2>
             <div style="font-size:13px; color:var(--text-muted); font-weight:600; margin-top:5px;">إغلاق تلقائي آمن وتشفير بعد: <span id="sessionTimer" style="color: #ff7675; font-weight:800;">15:00</span></div>
         </div>
 
-        <!-- كروت الإجماليات والنسب المئوية التي تشرف -->
         <div class="stats-grid">
             <div class="stat-card">
-                <div style="font-size: 12px; color: var(--text-muted); font-weight: 700;">💰 إجمالي التوثيق المالي</div>
+                <div style="font-size: 12px; color: var(--text-muted); font-weight: 700;">💰 إجمالي المبالغ الموثقة</div>
                 <div class="stat-val" id="totalMoney">14,300 ج.م</div>
             </div>
             <div class="stat-card gold-border">
-                <div style="font-size: 12px; color: var(--text-muted); font-weight: 700;">📈 نسبة الالتزام الإجمالية</div>
-                <div class="stat-val" id="complianceRate">92%</div>
+                <div style="font-size: 12px; color: var(--text-muted); font-weight: 700;">📈 معدل الالتزام للفترة</div>
+                <div class="stat-val" id="complianceRate">92.4%</div>
             </div>
             <div class="stat-card">
-                <div style="font-size: 12px; color: var(--text-muted); font-weight: 700;">✅ أيام مكتملة / متبقية</div>
-                <div class="stat-val" id="daysCount">31 / 4</div>
+                <div style="font-size: 12px; color: var(--text-muted); font-weight: 700;">📆 الأيام المحفظة والمتبقية</div>
+                <div class="stat-val" id="daysCount">31 يوم / 4 متبقي</div>
             </div>
         </div>
 
-        <!-- حاوية الأسابيع المنتظمة والدوائر الأنيقة -->
+        <!-- الحاوية الذكية لبناء الأسابيع والدوائر الشاملة التواريخ -->
         <div class="weeks-container" id="weeksContainer"></div>
     </div>
 
@@ -198,7 +222,6 @@
         const endDate = new Date(2027, 7, 1);   
         const daysPerPeriod = 35;
 
-        // استعادة حالات الاختفاء الأبدي للأزرار
         if (localStorage.getItem('d_t_u') === 'true') document.getElementById('dailyTestBtn').classList.add('hidden');
         if (localStorage.getItem('r_t_u') === 'true') document.getElementById('reportTestBtn').classList.add('hidden');
         if (localStorage.getItem('p_t_u') === 'true') document.getElementById('periodEndBtn').classList.add('hidden');
@@ -208,11 +231,10 @@
 
         function requestNotificationPermission() {
             Notification.requestPermission().then(permission => {
-                if(permission === 'granted') alert('✅ تم تفعيل واستقبال النظام الخارجي بنجاح وبشكل فخم.');
+                if(permission === 'granted') alert('✅ تم التفعيل الفاخر بنجاح.');
             });
         }
 
-        // 1. بروفا الإشعار اليومي المباشر
         function triggerDailyNotificationTest() {
             localStorage.setItem('d_t_u', 'true'); document.getElementById('dailyTestBtn').classList.add('hidden');
             sendNotification("📝 توثيق اليوم الحالي (بروفا)", "اختر فئة إنجازك المالي لليوم مباشرة ليتم حفظها سرياً فوراً:", [
@@ -220,14 +242,12 @@
             ]);
         }
 
-        // 2. بروفا لوحة التقارير والدوائر الفخمة (15 دقيقة)
         function triggerReportNotificationTest() {
             localStorage.setItem('r_t_u', 'true'); document.getElementById('reportTestBtn').classList.add('hidden');
             localStorage.setItem('external_session_expiry', new Date().getTime() + (15 * 60 * 1000));
             renderDashboardWeeks(); checkAccess();
         }
 
-        // 3. بروفا إشعار انتهاء الـ 5 أسابيع وفتح اللوحة الطويل
         function triggerPeriodEndTest() {
             localStorage.setItem('p_t_u', 'true'); document.getElementById('periodEndBtn').classList.add('hidden');
             sendNotification("⚠️ انتهاء فترة الـ 5 أسابيع الحالية", "انتهت المدة المحددة بنجاح. اضغط هنا لفتح شاشة التقارير الموسعة ومعاينة إجمالياتك.", [
@@ -235,11 +255,10 @@
             ]);
         }
 
-        // 4. بروفا إشعار انتهاء البرنامج كلياً للأبد مع احتفالية ومؤثرات
         function triggerFinalEndTest() {
             localStorage.setItem('f_t_u', 'true'); document.getElementById('finalEndBtn').classList.add('hidden');
             confetti();
-            sendNotification("🏆 تهانينا! اكتمل البرنامج بالكامل", "لقد نجحت في إنهاء العام المالي والتنظيمي الملتزم بنجاح خارق! تم إلغاء القفل نهائياً للأبد.", []);
+            sendNotification("🏆 تهانينا! اكتمل البرنامج بالكامل", "لقد نجحت في إنهاء العام المالي بنجاح خارق! تم إلغاء القفل نهائياً للأبد.", []);
         }
 
         function sendNotification(title, body, actions) {
@@ -279,13 +298,27 @@
             }
         }
 
-        // بناء وعرض الأسابيع والدوائر الفخمة بشكل منظم جداً تشرفك
+        // دالة ذكية لبناء وعرض التواريخ الميلادية والهجرية العربية مع المؤشرات الفخمة
         function renderDashboardWeeks() {
             const container = document.getElementById('weeksContainer');
             container.innerHTML = '';
             
-            // محاكاة لبيانات عشوائية فخمة من الـ 500 والـ 300 لإظهار الشكل الفاخر للتقارير
+            const daysNames = ['السبت', 'الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة'];
+            
+            // بيانات محاكاة تجريبية فخمة لعرض المؤشرات (500 و 300 وأيام فارغة)
             const dummyScores = [500, 500, 300, 500, 300, 500, 500, 300, 500, 500, 500, 300, 500, 500, 300, 500, 300, 500, 500, 300, 500, 500, 500, 300, 500, 500, 300, 500, 300, 500, 500, 0, 0, 0, 0];
+            
+            // مصفوفة تواريخ ميلادية محاكاة تبدأ من 1 أغسطس 2026
+            let currentDayTrack = new Date(2026, 7, 1);
+
+            // تواريخ هجرية محاكاة مكتوبة بالعربي تزامناً مع شهر صفر/ربيع الأول 1448هـ
+            const dummyHijriDates = [
+                "17 صفر", "18 صفر", "19 صفر", "20 صفر", "21 صفر", "22 صفر", "23 صفر",
+                "24 صفر", "25 صفر", "26 صفر", "27 صفر", "28 صفر", "29 صفر", "30 صفر",
+                "1 ربيع ١", "2 ربيع ١", "3 ربيع ١", "4 ربيع ١", "5 ربيع ١", "6 ربيع ١", "7 ربيع ١",
+                "8 ربيع ١", "9 ربيع ١", "10 ربيع ١", "11 ربيع ١", "12 ربيع ١", "13 ربيع ١", "14 ربيع ١",
+                "15 ربيع ١", "16 ربيع ١", "17 ربيع ١", "18 ربيع ١", "19 ربيع ١", "20 ربيع ١", "21 ربيع ١"
+            ];
 
             for (let w = 0; w < 5; w++) {
                 const weekRow = document.createElement('div');
@@ -295,23 +328,44 @@
                 const circlesGrid = document.createElement('div');
                 circlesGrid.className = 'circles-grid';
                 
-                for (let d = 1; d <= 7; d++) {
-                    const dayIndex = (w * 7) + (d - 1);
-                    const dayNum = dayIndex + 1;
+                for (let d = 0; d < 7; d++) {
+                    const dayIndex = (w * 7) + d;
                     const currentScore = dummyScores[dayIndex];
                     
+                    // حساب التاريخ الميلادي لليوم الحالي
+                    let mDate = new Date(startDate.getTime() + (dayIndex * 24 * 60 * 60 * 1000));
+                    let mDateString = `${mDate.getDate()}/${mDate.getMonth() + 1}`;
+                    let dayName = daysNames[d];
+                    let hijriStr = dummyHijriDates[dayIndex];
+
                     const circle = document.createElement('div');
                     circle.className = 'day-circle';
                     
-                    // لو اليوم تم توثيقه تظهر قيمته بشكل منسق جداً
-                    if(currentScore > 0) {
-                        circle.style.background = '#ffffff';
-                        circle.style.borderColor = '#1e3c72';
-                        circle.innerHTML = `<div class="circle-num">${dayNum}</div><div class="circle-score">${currentScore}</div>`;
+                    // تطبيق مؤشر الاختيار البصري (هالات ملونة ومؤشرات واضحة)
+                    if (currentScore === 500) {
+                        circle.classList.add('circle-500');
+                        circle.innerHTML = `
+                            <div class="circle-day-name">${dayName}</div>
+                            <div class="circle-main-num">${dayIndex + 1}</div>
+                            <div class="circle-dates">${mDateString} م | <span class="circle-hijri">${hijriStr}</span></div>
+                            <div class="indicator-badge">⭐ فئة 500</div>
+                        `;
+                    } else if (currentScore === 300) {
+                        circle.classList.add('circle-300');
+                        circle.innerHTML = `
+                            <div class="circle-day-name">${dayName}</div>
+                            <div class="circle-main-num">${dayIndex + 1}</div>
+                            <div class="circle-dates">${mDateString} م | <span class="circle-hijri">${hijriStr}</span></div>
+                            <div class="indicator-badge">🔹 فئة 300</div>
+                        `;
                     } else {
-                        circle.style.background = 'rgba(0,0,0,0.03)';
-                        circle.style.borderStyle = 'dashed';
-                        circle.innerHTML = `<div class="circle-num" style="color:#aaa;">${dayNum}</div><div class="circle-score" style="color:#aaa;">-</div>`;
+                        circle.classList.add('circle-empty');
+                        circle.innerHTML = `
+                            <div class="circle-day-name" style="color:#aaa;">${dayName}</div>
+                            <div class="circle-main-num" style="color:#aaa;">${dayIndex + 1}</div>
+                            <div class="circle-dates" style="color:#ccc;">${mDateString} م</div>
+                            <div class="indicator-badge">-</div>
+                        `;
                     }
                     
                     circlesGrid.appendChild(circle);
