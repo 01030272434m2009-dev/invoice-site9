@@ -4,18 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🔒 نظام المتابعة الرقمي الفاخر 2026</title>
+    <!-- استيراد خط تجريدي أنيق ومريح للعين -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
         :root {
-            --glass-bg: rgba(255, 255, 255, 0.55);
-            --glass-border: rgba(255, 255, 255, 0.4);
+            --glass-bg: rgba(255, 255, 255, 0.45);
+            --glass-border: rgba(255, 255, 255, 0.35);
             --primary-gradient: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            --gold: #d4af37;
-            --gold-glow: rgba(212, 175, 55, 0.3);
-            --silver-glow: rgba(74, 144, 226, 0.25);
+            --accent-color: #d4af37; /* لون ذهبي ملكي ناعم */
             --text-main: #1a2530;
             --text-muted: #5a6b7c;
         }
@@ -34,22 +33,38 @@
             justify-content: center;
         }
 
+        /* 🔒 شاشة القفل الزجاجية الفاخرة */
         .glass-panel {
             background: var(--glass-bg);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
             border-radius: 35px;
             padding: 40px;
             width: 100%;
-            max-width: 900px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
+            max-width: 750px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
             text-align: center;
+            box-sizing: border-box;
+            animation: fadeIn 0.8s ease-out;
         }
 
-        .main-title { font-size: 28px; font-weight: 900; color: #1e3c72; margin-bottom: 5px; }
-        .subtitle { font-size: 14px; color: var(--text-muted); margin-bottom: 35px; }
+        .main-title {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 10px;
+            color: #1e3c72;
+        }
 
+        .subtitle {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+            font-weight: 400;
+        }
+
+        /* شبكة العدادات التنازلية الفخمة */
         .countdown-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -58,98 +73,146 @@
         }
 
         .timer-card {
-            background: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             border-radius: 24px;
-            padding: 20px;
+            padding: 25px 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
         }
-        .timer-title { font-size: 13px; color: var(--text-muted); font-weight: 700; margin-bottom: 12px; }
-        .timer-digits { display: flex; justify-content: center; gap: 15px; direction: ltr; }
-        .time-num { font-size: 32px; font-weight: 900; color: #1e3c72; line-height: 1; }
-        .time-label { font-size: 10px; color: var(--text-muted); margin-top: 5px; font-weight: 600; }
+        
+        .timer-title { 
+            font-size: 13px; 
+            color: var(--text-muted); 
+            font-weight: 600; 
+            margin-bottom: 15px; 
+        }
+        
+        .timer-digits { 
+            display: flex; 
+            justify-content: center; 
+            gap: 15px; 
+            direction: ltr; 
+        }
 
+        .time-segment {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .time-num { 
+            font-size: 32px; 
+            font-weight: 800; 
+            color: #1e3c72; 
+            font-family: 'Cairo', monospace;
+            line-height: 1;
+        }
+
+        .time-label { 
+            font-size: 10px; 
+            color: var(--text-muted); 
+            margin-top: 5px; 
+            font-weight: 600; 
+            letter-spacing: 0.5px;
+        }
+
+        /* أزرار البروفا والتفعيل بشكل راقي وبسيط جداً بدون تشويه */
         .action-btn {
             background: var(--primary-gradient);
-            color: white; border: none; padding: 14px 35px; font-size: 14px; font-weight: 700;
-            border-radius: 50px; cursor: pointer; transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(30, 60, 114, 0.15); font-family: inherit;
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(30, 60, 114, 0.15);
+            font-family: inherit;
         }
-        .action-btn:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(30, 60, 114, 0.25); }
-        .btn-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 25px; border-top: 1px solid rgba(255,255,255,0.25); padding-top: 25px; }
-        .btn-secondary { background: rgba(255, 255, 255, 0.8); color: #1e3c72; border: 1px solid rgba(30, 60, 114, 0.15); font-size: 12px; padding: 10px 20px; }
-
-        /* 📊 لوحة التحكم والتقارير الفاخرة */
-        #mainApp { display: none; width: 100%; max-width: 1150px; animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
         
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(30, 60, 114, 0.25);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 25px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            padding-top: 25px;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.8);
+            color: #1e3c72;
+            border: 1px solid rgba(30, 60, 114, 0.15);
+        }
+
+        /* 💻 لوحة التحكم وشاشة الدوائر (مخفية، تفتح فقط بالبروفا أو كل 5 أسابيع) */
+        #mainApp { 
+            display: none; 
+            width: 100%;
+            max-width: 1000px;
+            animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .app-header {
+            text-align: center;
             margin-bottom: 30px;
         }
-        .stat-card {
-            background: white; border-radius: 20px; padding: 20px; text-align: center;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.03); border-bottom: 4px solid #1e3c72;
-        }
-        .stat-val { font-size: 26px; font-weight: 900; color: #1e3c72; margin-top: 5px; }
-        .stat-card.gold-border { border-bottom-color: var(--gold); }
-        .stat-card.gold-border .stat-val { color: #b38f1d; }
 
-        /* حاوية الأسابيع الفخمة */
-        .weeks-container {
-            background: rgba(255, 255, 255, 0.45); border: 1px solid var(--glass-border);
-            padding: 30px; border-radius: 32px; box-shadow: 0 20px 40px rgba(0,0,0,0.03);
-            display: flex; flex-direction: column; gap: 30px;
+        .app-header h2 {
+            font-size: 26px;
+            font-weight: 800;
+            color: #1e3c72;
+            margin: 0;
         }
-        .week-row {
-            background: rgba(255, 255, 255, 0.6); padding: 25px; border-radius: 24px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.01);
-        }
-        .week-title { font-size: 15px; font-weight: 800; color: #1e3c72; margin-bottom: 20px; text-align: right; border-right: 4px solid #1e3c72; padding-right: 12px; }
-        
-        /* شبكة الدوائر التفاعلية المتجاوبة */
-        .circles-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 20px; }
-        
-        @media (max-width: 900px) { .circles-grid { grid-template-columns: repeat(4, 1fr); } }
-        @media (max-width: 500px) { .circles-grid { grid-template-columns: repeat(2, 1fr); } }
 
-        /* 🔴 تصميم الدائرة الفخم والكامل بالتفاصيل المطلوبة */
+        .session-countdown {
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        /* شبكة الدوائر الاحترافية الشيك جداً */
+        .tracker-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); 
+            gap: 20px; 
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            padding: 35px; 
+            border-radius: 32px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+        }
+
         .day-circle { 
-            background: white; border: 1px solid rgba(30, 60, 114, 0.12); border-radius: 50%; 
-            aspect-ratio: 1/1; display: flex; flex-direction: column; justify-content: center; align-items: center; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.02); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); padding: 10px; box-sizing: border-box; text-align: center;
+            background: rgba(255, 255, 255, 0.8); 
+            border: 1px solid rgba(30, 60, 114, 0.08); 
+            border-radius: 50%; 
+            aspect-ratio: 1/1; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
         }
+        .day-circle:hover {
+            transform: scale(1.05);
+            background: #ffffff;
+            border-color: #1e3c72;
+        }
+
+        .circle-label { font-size: 11px; color: var(--text-muted); font-weight: 400; }
+        .circle-num { font-size: 20px; font-weight: 800; color: #1e3c72; margin-top: -2px; }
         
-        /* 🏆 مؤشرات وتأثيرات الاختيار التنافسية الفخمة */
-        .circle-500 {
-            border: 2px solid var(--gold) !important;
-            background: linear-gradient(135deg, #ffffff 0%, #fffdf0 100%);
-            box-shadow: 0 10px 25px var(--gold-glow) !important;
-        }
-        .circle-500 .indicator-badge { background: var(--gold); color: white; }
-
-        .circle-300 {
-            border: 2px solid #4a90e2 !important;
-            background: linear-gradient(135deg, #ffffff 0%, #f4f8ff 100%);
-            box-shadow: 0 10px 25px var(--silver-glow) !important;
-        }
-        .circle-300 .indicator-badge { background: #4a90e2; color: white; }
-
-        .circle-empty {
-            background: rgba(0,0,0,0.02); border: 1px dashed rgba(0,0,0,0.15); opacity: 0.6;
-        }
-
-        /* المكونات الداخلية للدائرة لضمان التنظيم والشياكة */
-        .circle-day-name { font-size: 11px; font-weight: 700; color: var(--text-muted); }
-        .circle-main-num { font-size: 24px; font-weight: 900; color: #1e3c72; line-height: 1.1; margin: 2px 0; }
-        .circle-dates { font-size: 9px; font-weight: 600; color: #7f8c8d; line-height: 1.3; }
-        .circle-hijri { color: #b38f1d; font-weight: 700; }
-        
-        /* بادج المؤشر السفلي الصغير للقيمة الموثقة */
-        .indicator-badge {
-            font-size: 9px; font-weight: 800; padding: 2px 8px; border-radius: 10px; margin-top: 5px; background: #eee; color: #777;
-        }
-
         @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         .hidden { display: none !important; }
@@ -157,11 +220,12 @@
 </head>
 <body>
 
-    <!-- 🔒 الواجهة المقفلة المحمية -->
+    <!-- 🔒 شاشة القفل والعدادات الفاخرة للبرنامج المعلق -->
     <div id="lockScreen" class="glass-panel">
         <div class="main-title">🔒 نظام المتابعة المشفر والأمن</div>
-        <div class="subtitle">تجرى كافة العمليات في الخلفية التلقائية لحفظ أقصى درجات السرية والخصوصية.</div>
+        <div class="subtitle">يتم تحديث البيانات وتلقي التوثيقات خارجياً بالكامل لحماية خصوصيتك.</div>
         
+        <!-- شبكة العدادات التنازلية الفخمة المريحة بصرياً -->
         <div class="countdown-grid">
             <div class="timer-card">
                 <div class="timer-title">⏳ المتبقي على انطلاق البرنامج رسميًا</div>
@@ -181,197 +245,140 @@
             </div>
         </div>
         
+        <!-- الأزرار الأنيقة والمنسقة تحت العدادات -->
         <button class="action-btn" onclick="requestNotificationPermission()">🔔 تفعيل نظام الإشعارات الخارجية</button>
         
         <div class="btn-group">
-            <button class="action-btn btn-secondary" id="dailyTestBtn" onclick="triggerDailyNotificationTest()">✉️ بروفا الإشعار اليومي</button>
-            <button class="action-btn btn-secondary" id="reportTestBtn" onclick="triggerReportNotificationTest()">📊 بروفا لوحة التقارير الكاملة</button>
-            <button class="action-btn btn-secondary" id="periodEndBtn" onclick="triggerPeriodEndTest()">⚠️ بروفا إشعار الـ 5 أسابيع</button>
-            <button class="action-btn btn-secondary" id="finalEndBtn" onclick="triggerFinalEndTest()">🏆 بروفا الإنتهاء الكامل</button>
+            <button class="action-btn btn-secondary" id="dailyTestBtn" onclick="triggerDailyNotificationTest()">✉️ بروفا الإشعار اليومي (مرة واحدة)</button>
+            <button class="action-btn btn-secondary" id="reportTestBtn" onclick="triggerReportNotificationTest()">📊 بروفا شاشة التقارير والدوائر (مرة واحدة)</button>
         </div>
     </div>
 
-    <!-- 📊 لوحة التحكم الكلية المحدثة بالتواريخ والمؤشرات الفاخرة -->
+    <!-- 💻 لوحة التحكم والتقارير والشاشات (تفتح 15 دقيقة فقط) -->
     <div id="mainApp">
-        <div style="text-align: center; margin-bottom: 25px;">
-            <h2 style="color:#1e3c72; margin:0; font-weight: 900;">📊 لوحة التحكم والإحصائيات والأيام التفصيلية</h2>
-            <div style="font-size:13px; color:var(--text-muted); font-weight:600; margin-top:5px;">إغلاق تلقائي آمن وتشفير بعد: <span id="sessionTimer" style="color: #ff7675; font-weight:800;">15:00</span></div>
+        <div class="app-header">
+            <h2>🔓 شاشة التقارير والدوائر الحالية</h2>
+            <div class="session-countdown">سيتم إعادة تشفير البيانات تلقائياً بعد: <span id="sessionTimer" style="color: #6c5ce7; font-weight:800;">15:00</span></div>
         </div>
-
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div style="font-size: 12px; color: var(--text-muted); font-weight: 700;">💰 إجمالي المبالغ الموثقة</div>
-                <div class="stat-val" id="totalMoney">14,300 ج.م</div>
-            </div>
-            <div class="stat-card gold-border">
-                <div style="font-size: 12px; color: var(--text-muted); font-weight: 700;">📈 معدل الالتزام للفترة</div>
-                <div class="stat-val" id="complianceRate">92.4%</div>
-            </div>
-            <div class="stat-card">
-                <div style="font-size: 12px; color: var(--text-muted); font-weight: 700;">📆 الأيام المحفظة والمتبقية</div>
-                <div class="stat-val" id="daysCount">31 يوم / 4 متبقي</div>
-            </div>
-        </div>
-
-        <!-- الحاوية الذكية لبناء الأسابيع والدوائر الشاملة التواريخ -->
-        <div class="weeks-container" id="weeksContainer"></div>
+        <div class="tracker-grid" id="trackerGrid"></div>
     </div>
 
     <script>
         const startDate = new Date(2026, 7, 1); 
         const endDate = new Date(2027, 7, 1);   
         const daysPerPeriod = 35;
+        let celebrationTriggered = false;
 
-        if (localStorage.getItem('d_t_u') === 'true') document.getElementById('dailyTestBtn').classList.add('hidden');
-        if (localStorage.getItem('r_t_u') === 'true') document.getElementById('reportTestBtn').classList.add('hidden');
-        if (localStorage.getItem('p_t_u') === 'true') document.getElementById('periodEndBtn').classList.add('hidden');
-        if (localStorage.getItem('f_t_u') === 'true') document.getElementById('finalEndBtn').classList.add('hidden');
+        // تذكر حالة اختفاء أزرار البروفا للأبد
+        if (localStorage.getItem('daily_test_used') === 'true') document.getElementById('dailyTestBtn').classList.add('hidden');
+        if (localStorage.getItem('report_test_used') === 'true') document.getElementById('reportTestBtn').classList.add('hidden');
 
-        if ('serviceWorker' in navigator) { navigator.serviceWorker.register('sw.js').catch(err => console.log(err)); }
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js').catch(err => console.log(err));
+        }
 
         function requestNotificationPermission() {
             Notification.requestPermission().then(permission => {
-                if(permission === 'granted') alert('✅ تم التفعيل الفاخر بنجاح.');
+                if(permission === 'granted') alert('✅ تم تنشيط الإشعارات الخارجية بنجاح وبشكل أنيق.');
             });
         }
 
+        // بروفا الإشعار اليومي الفخم (يختفي للأبد)
         function triggerDailyNotificationTest() {
-            localStorage.setItem('d_t_u', 'true'); document.getElementById('dailyTestBtn').classList.add('hidden');
-            sendNotification("📝 توثيق اليوم الحالي (بروفا)", "اختر فئة إنجازك المالي لليوم مباشرة ليتم حفظها سرياً فوراً:", [
-                { action: 'record_500', title: '💰 فئة 500' }, { action: 'record_300', title: '💰 فئة 300' }
-            ]);
-        }
-
-        function triggerReportNotificationTest() {
-            localStorage.setItem('r_t_u', 'true'); document.getElementById('reportTestBtn').classList.add('hidden');
-            localStorage.setItem('external_session_expiry', new Date().getTime() + (15 * 60 * 1000));
-            renderDashboardWeeks(); checkAccess();
-        }
-
-        function triggerPeriodEndTest() {
-            localStorage.setItem('p_t_u', 'true'); document.getElementById('periodEndBtn').classList.add('hidden');
-            sendNotification("⚠️ انتهاء فترة الـ 5 أسابيع الحالية", "انتهت المدة المحددة بنجاح. اضغط هنا لفتح شاشة التقارير الموسعة ومعاينة إجمالياتك.", [
-                { action: 'open_app_real', title: '📊 فتح لوحة التقارير' }
-            ]);
-        }
-
-        function triggerFinalEndTest() {
-            localStorage.setItem('f_t_u', 'true'); document.getElementById('finalEndBtn').classList.add('hidden');
-            confetti();
-            sendNotification("🏆 تهانينا! اكتمل البرنامج بالكامل", "لقد نجحت في إنهاء العام المالي بنجاح خارق! تم إلغاء القفل نهائياً للأبد.", []);
-        }
-
-        function sendNotification(title, body, actions) {
-            if (Notification.permission === 'granted' && 'serviceWorker' in navigator) {
+            localStorage.setItem('daily_test_used', 'true');
+            document.getElementById('dailyTestBtn').classList.add('hidden');
+            
+            if (Notification.permission === 'granted') {
                 navigator.serviceWorker.ready.then(reg => {
-                    reg.showNotification(title, { body: body, icon: "https://cdn-icons-png.flaticon.com/512/732/732200.png", requireInteraction: true, actions: actions });
+                    reg.showNotification("📝 توثيق اليوم الحالي (بروفا)", {
+                        body: "برجاء اختيار فئتك المالية المفضلة لليوم لحفظها وتشفيرها فوراً دون دخول التطبيق:",
+                        icon: "https://cdn-icons-png.flaticon.com/512/732/732200.png",
+                        tag: "daily-input-tag",
+                        requireInteraction: true,
+                        actions: [
+                            { action: 'record_500', title: '💰 فئة 500' },
+                            { action: 'record_300', title: '💰 فئة 300' }
+                        ]
+                    });
                 });
-            } else { alert(body); }
+            } else {
+                alert("برجاء الضغط على الزر الأزرق لتفعيل الإشعارات أولاً.");
+            }
+        }
+
+        // بروفا شاشة التقارير والدوائر الـ 15 دقيقة (يختفي للأبد)
+        function triggerReportNotificationTest() {
+            localStorage.setItem('report_test_used', 'true');
+            document.getElementById('reportTestBtn').classList.add('hidden');
+            
+            let expiryTime = new Date().getTime() + (15 * 60 * 1000); // 15 دقيقة
+            localStorage.setItem('external_session_expiry', expiryTime);
+            
+            renderCircles();
+            checkAccess();
         }
 
         function checkAccess() {
-            const now = new Date(); let hasAccess = false;
+            const now = new Date();
+            let hasAccess = false;
+
             let sessionExpiry = localStorage.getItem('external_session_expiry');
             if (sessionExpiry && now.getTime() < parseInt(sessionExpiry)) {
                 hasAccess = true;
                 let timeLeft = Math.ceil((parseInt(sessionExpiry) - now.getTime()) / 1000);
-                document.getElementById('sessionTimer').innerText = `${Math.floor(timeLeft / 60).toString().padStart(2, '0')}:${(timeLeft % 60).toString().padStart(2, '0')}`;
+                let minutes = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+                let seconds = (timeLeft % 60).toString().padStart(2, '0');
+                document.getElementById('sessionTimer').innerText = `${minutes}:${seconds}`;
             }
-            document.getElementById('mainApp').style.display = hasAccess ? 'block' : 'none';
-            document.getElementById('lockScreen').style.display = hasAccess ? 'none' : 'block';
-            document.body.style.alignItems = hasAccess ? 'flex-start' : 'center';
+
+            if (hasAccess) {
+                document.getElementById('mainApp').style.display = 'block';
+                document.getElementById('lockScreen').style.display = 'none';
+                document.body.style.alignItems = 'flex-start';
+            } else {
+                document.getElementById('mainApp').style.display = 'none';
+                document.getElementById('lockScreen').style.display = 'block';
+                document.body.style.alignItems = 'center';
+            }
+
             updateTimers(now);
         }
 
         function updateTimers(now) {
             let totalLeft = endDate - now;
-            if (totalLeft > 0) {
-                document.getElementById('f-day').innerText = Math.floor(totalLeft / (1000*60*60*24));
-                document.getElementById('f-hour').innerText = Math.floor((totalLeft % (1000*60*60*24)) / (1000*60*60));
-                document.getElementById('f-min').innerText = Math.floor((totalLeft % (1000*60*60)) / (1000*60));
+            if (totalLeft <= 0) {
+                if (!celebrationTriggered) { confetti(); celebrationTriggered = true; }
+            } else {
+                let d = Math.floor(totalLeft / (1000*60*60*24));
+                let h = Math.floor((totalLeft % (1000*60*60*24)) / (1000*60*60));
+                let m = Math.floor((totalLeft % (1000*60*60)) / (1000*60));
+                document.getElementById('f-day').innerText = d;
+                document.getElementById('f-hour').innerText = h;
+                document.getElementById('f-min').innerText = m;
             }
+
             let startLeft = startDate - now;
             if (startLeft > 0) {
-                document.getElementById('p-day').innerText = Math.floor(startLeft / (1000*60*60*24));
-                document.getElementById('p-hour').innerText = Math.floor((startLeft % (1000*60*60*24)) / (1000*60*60));
-                document.getElementById('p-min').innerText = Math.floor((startLeft % (1000*60*60)) / (1000*60));
+                let d = Math.floor(startLeft / (1000*60*60*24));
+                let h = Math.floor((startLeft % (1000*60*60*24)) / (1000*60*60));
+                let m = Math.floor((startLeft % (1000*60*60)) / (1000*60));
+                document.getElementById('p-day').innerText = d;
+                document.getElementById('p-hour').innerText = h;
+                document.getElementById('p-min').innerText = m;
             }
         }
 
-        // دالة ذكية لبناء وعرض التواريخ الميلادية والهجرية العربية مع المؤشرات الفخمة
-        function renderDashboardWeeks() {
-            const container = document.getElementById('weeksContainer');
-            container.innerHTML = '';
-            
-            const daysNames = ['السبت', 'الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة'];
-            
-            // بيانات محاكاة تجريبية فخمة لعرض المؤشرات (500 و 300 وأيام فارغة)
-            const dummyScores = [500, 500, 300, 500, 300, 500, 500, 300, 500, 500, 500, 300, 500, 500, 300, 500, 300, 500, 500, 300, 500, 500, 500, 300, 500, 500, 300, 500, 300, 500, 500, 0, 0, 0, 0];
-            
-            // مصفوفة تواريخ ميلادية محاكاة تبدأ من 1 أغسطس 2026
-            let currentDayTrack = new Date(2026, 7, 1);
-
-            // تواريخ هجرية محاكاة مكتوبة بالعربي تزامناً مع شهر صفر/ربيع الأول 1448هـ
-            const dummyHijriDates = [
-                "17 صفر", "18 صفر", "19 صفر", "20 صفر", "21 صفر", "22 صفر", "23 صفر",
-                "24 صفر", "25 صفر", "26 صفر", "27 صفر", "28 صفر", "29 صفر", "30 صفر",
-                "1 ربيع ١", "2 ربيع ١", "3 ربيع ١", "4 ربيع ١", "5 ربيع ١", "6 ربيع ١", "7 ربيع ١",
-                "8 ربيع ١", "9 ربيع ١", "10 ربيع ١", "11 ربيع ١", "12 ربيع ١", "13 ربيع ١", "14 ربيع ١",
-                "15 ربيع ١", "16 ربيع ١", "17 ربيع ١", "18 ربيع ١", "19 ربيع ١", "20 ربيع ١", "21 ربيع ١"
-            ];
-
-            for (let w = 0; w < 5; w++) {
-                const weekRow = document.createElement('div');
-                weekRow.className = 'week-row';
-                weekRow.innerHTML = `<div class="week-title">الأسبوع رقم ${w + 1}</div>`;
-                
-                const circlesGrid = document.createElement('div');
-                circlesGrid.className = 'circles-grid';
-                
-                for (let d = 0; d < 7; d++) {
-                    const dayIndex = (w * 7) + d;
-                    const currentScore = dummyScores[dayIndex];
-                    
-                    // حساب التاريخ الميلادي لليوم الحالي
-                    let mDate = new Date(startDate.getTime() + (dayIndex * 24 * 60 * 60 * 1000));
-                    let mDateString = `${mDate.getDate()}/${mDate.getMonth() + 1}`;
-                    let dayName = daysNames[d];
-                    let hijriStr = dummyHijriDates[dayIndex];
-
-                    const circle = document.createElement('div');
-                    circle.className = 'day-circle';
-                    
-                    // تطبيق مؤشر الاختيار البصري (هالات ملونة ومؤشرات واضحة)
-                    if (currentScore === 500) {
-                        circle.classList.add('circle-500');
-                        circle.innerHTML = `
-                            <div class="circle-day-name">${dayName}</div>
-                            <div class="circle-main-num">${dayIndex + 1}</div>
-                            <div class="circle-dates">${mDateString} م | <span class="circle-hijri">${hijriStr}</span></div>
-                            <div class="indicator-badge">⭐ فئة 500</div>
-                        `;
-                    } else if (currentScore === 300) {
-                        circle.classList.add('circle-300');
-                        circle.innerHTML = `
-                            <div class="circle-day-name">${dayName}</div>
-                            <div class="circle-main-num">${dayIndex + 1}</div>
-                            <div class="circle-dates">${mDateString} م | <span class="circle-hijri">${hijriStr}</span></div>
-                            <div class="indicator-badge">🔹 فئة 300</div>
-                        `;
-                    } else {
-                        circle.classList.add('circle-empty');
-                        circle.innerHTML = `
-                            <div class="circle-day-name" style="color:#aaa;">${dayName}</div>
-                            <div class="circle-main-num" style="color:#aaa;">${dayIndex + 1}</div>
-                            <div class="circle-dates" style="color:#ccc;">${mDateString} م</div>
-                            <div class="indicator-badge">-</div>
-                        `;
-                    }
-                    
-                    circlesGrid.appendChild(circle);
-                }
-                weekRow.appendChild(circlesGrid);
-                container.appendChild(weekRow);
+        function renderCircles() {
+            const grid = document.getElementById('trackerGrid');
+            grid.innerHTML = '';
+            for (let i = 1; i <= daysPerPeriod; i++) {
+                const circle = document.createElement('div');
+                circle.className = 'day-circle';
+                circle.innerHTML = `
+                    <div class="circle-label">يوم</div>
+                    <div class="circle-num">${i}</div>
+                `;
+                grid.appendChild(circle);
             }
         }
 
