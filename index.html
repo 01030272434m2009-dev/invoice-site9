@@ -309,17 +309,33 @@
         const daysPerPeriod = 35;
         let celebrationTriggered = false;
 
+        // 🟢 الاستماع للرسائل القادمة من Service Worker عند فتح التطبيق من الإشعار
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.addEventListener('message', event => {
+                if (event.data && event.data.type === 'SET_SESSION_EXPIRY') {
+                    localStorage.setItem('external_session_expiry', event.data.expiry);
+                    renderCircles();
+                    checkAccess();
+                }
+            });
+
+            navigator.serviceWorker.register('sw.js').catch(err => console.error("خطأ في تسجيل Service Worker:", err));
+        }
+
+        // 🟢 التقاط مدة الجلسة من عنوان الصفحة (URL) إذا تم فتح نافذة جديدة
+        const urlParams = new URLSearchParams(window.location.search);
+        const sessionExpiryFromUrl = urlParams.get('session_expiry');
+        if (sessionExpiryFromUrl) {
+            localStorage.setItem('external_session_expiry', sessionExpiryFromUrl);
+            window.history.replaceState({}, document.title, window.location.pathname); // نظف الـ URL
+        }
+
         // إخفاء الأزرار عند فتح الصفحة إذا تم استخدامها سابقاً
         if (localStorage.getItem('daily_test_used') === 'true') {
             document.getElementById('dailyTestBtn').classList.add('hidden');
         }
         if (localStorage.getItem('report_test_used') === 'true') {
             document.getElementById('reportTestBtn').classList.add('hidden');
-        }
-
-        // تسجيل Service Worker
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js').catch(err => console.error("خطأ في تسجيل Service Worker:", err));
         }
 
         function requestNotificationPermission() {
@@ -442,6 +458,7 @@
 
         function renderCircles() {
             const grid = document.getElementById('trackerGrid');
+            if (grid.children.length > 0) return; // منع التكرار بدون داعي
             grid.innerHTML = '';
             for (let i = 1; i <= daysPerPeriod; i++) {
                 const circle = document.createElement('div');
