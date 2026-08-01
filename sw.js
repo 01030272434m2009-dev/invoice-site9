@@ -1,16 +1,17 @@
+// 🟢 1. الاستماع لكليك الإشعارات وتحديد الأكشن
 self.addEventListener('notificationclick', function(event) {
     event.notification.close(); 
 
     const action = event.action;
 
-    // 1. معالجة فتح اللوحة ومنح جلسة الـ 15 دقيقة
+    // 🟢 الحالة الأولى: فتح اللوحة وتفعيل جلسة الـ 15 دقيقة
     if (action === 'open_app_real' || action === '' || !action) {
-        const expiryTime = new Date().getTime() + (15 * 60 * 1000); // 15 دقيقة من الآن
+        const expiryTime = new Date().getTime() + (15 * 60 * 1000); // 15 دقيقة
         const targetUrl = new URL('./', self.location.href).href + `?session_expiry=${expiryTime}`;
 
         const promiseChain = clients.matchAll({ type: 'window', includeUncontrolled: true })
             .then(function(windowClients) {
-                // إذا كانت الصفحة مفتوحة، قم بالتركيز عليها وإرسال وقت الانتهاء
+                // إذا كانت الصفحة مفتوحة بالمتصفح، ركز عليها وأرسل وقت انتهاء الجلسة
                 for (let i = 0; i < windowClients.length; i++) {
                     let client = windowClients[i];
                     if ('focus' in client) {
@@ -18,7 +19,7 @@ self.addEventListener('notificationclick', function(event) {
                         return client.focus();
                     }
                 }
-                // إذا لم تكن مفتوحة، افتح نافذة جديدة بالرابط المحدث
+                // إذا كانت الصفحة مغلقة، افتحها برابط يحمل جلسة الانتهاء
                 if (clients.openWindow) {
                     return clients.openWindow(targetUrl);
                 }
@@ -27,22 +28,25 @@ self.addEventListener('notificationclick', function(event) {
         event.waitUntil(promiseChain);
     }
 
-    // 2. حفظ التوثيقات السريعة وإظهار إشعار تأكيد + إبلاغ الواجهة
+    // 🟢 الحالة الثانية: التوثيق المالي السريع (فئة 500 ج.م أو 300 ج.م) مباشرة من الإشعار
     if (action === 'record_500' || action === 'record_300') {
-        let scoreValue = (action === 'record_500') ? 500 : 300;
+        const amountValue = (action === 'record_500') ? 500 : 300;
 
         const promiseChain = clients.matchAll({ type: 'window', includeUncontrolled: true })
             .then(function(windowClients) {
-                // إبلاغ الصفحات المفتوحة بقيمة التوثيق الجديدة فوراً
+                // 1. إرسال المبلغ المالي للصفحات المفتوحة فوراً
                 windowClients.forEach(client => {
-                    client.postMessage({ type: 'RECORD_SCORE', amount: scoreValue });
+                    client.postMessage({ 
+                        type: 'RECORD_FINANCIAL', 
+                        amount: amountValue 
+                    });
                 });
 
-                // إظهار إشعار التأكيد
-                return self.registration.showNotification("✅ تم التوثيق بنجاح", {
-                    body: `تم رصد وتسجيل فئة ${scoreValue} بنجاح.`,
+                // 2. إظهار إشعار تأكيد التوثيق المالي
+                return self.registration.showNotification("💰 تم تسجيل التوثيق المالي بنجاح", {
+                    body: `تم تسجيل مبلغ ${amountValue} ج.م في تقريرك اليومي.`,
                     icon: "https://cdn-icons-png.flaticon.com/512/190/190411.png",
-                    tag: "confirmation-tag"
+                    tag: "confirmation-financial-tag"
                 });
             });
 
