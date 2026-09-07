@@ -3,99 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔒 نظام المتابعة الرقمي الفاخر 2026</title>
+    <title>🔒 نظام المتابعة الرقمي والتقارير الذكية 2026-2027</title>
     
-    <!-- خط Cairo أنيق ومصمم للواجهات الاحترافية -->
+    <!-- خط Cairo للأداء والواجهات الفاخرة -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- مكتبة احتفالات الانتهاء -->
+    <!-- مكتبة الاحتفالات -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <style>
-        /* ================= 🎨 المتغيرات الثيمات الستة (6 Themes) ================= */
+        /* ================= 🎨 الألوان والتصميم الثيمي الديناميكي ================= */
         :root {
             --font-main: 'Cairo', sans-serif;
-            --transition-speed: 0.6s;
-        }
-
-        /* الشكل 1: Deep Space Cyberpunk */
-        [data-theme="theme-1"] {
-            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-card: rgba(255, 255, 255, 0.08);
-            --glass-border: rgba(255, 255, 255, 0.15);
-            --primary-accent: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
-            --accent-glow: #6366f1;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --card-flip-bg: #1e1b4b;
-        }
-
-        /* الشكل 2: Luxury Gold */
-        [data-theme="theme-2"] {
-            --bg-gradient: linear-gradient(135deg, #18181b 0%, #27272a 50%, #09090b 100%);
-            --glass-bg: rgba(245, 158, 11, 0.05);
-            --glass-card: rgba(255, 255, 255, 0.06);
-            --glass-border: rgba(245, 158, 11, 0.25);
-            --primary-accent: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            --transition-speed: 0.5s;
+            
+            /* ألوان مميزة: كافيه، أبيض، أسود، لبني */
+            --bg-gradient: linear-gradient(135deg, #1c1917 0%, #292524 50%, #0c0a09 100%);
+            --glass-bg: rgba(255, 255, 255, 0.07);
+            --glass-card: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(217, 119, 6, 0.3);
+            --primary-accent: linear-gradient(135deg, #d97706 0%, #b45309 100%);
             --accent-glow: #f59e0b;
-            --text-main: #fffbe3;
-            --text-muted: #d4d4d8;
+            --accent-cyan: #06b6d4;
+            --text-main: #fef3c7;
+            --text-muted: #d6d3d1;
             --card-flip-bg: #451a03;
         }
 
-        /* الشكل 3: Emerald Matrix */
-        [data-theme="theme-3"] {
-            --bg-gradient: linear-gradient(135deg, #022c22 0%, #064e3b 50%, #022c22 100%);
-            --glass-bg: rgba(16, 185, 129, 0.08);
-            --glass-card: rgba(255, 255, 255, 0.07);
-            --glass-border: rgba(52, 211, 153, 0.25);
-            --primary-accent: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            --accent-glow: #10b981;
-            --text-main: #ecfdf5;
-            --text-muted: #a7f3d0;
-            --card-flip-bg: #065f46;
+        /* الثيمات الشهرية المخصصة (تتغير تلقائياً كل شهر) */
+        [data-theme="theme-cafe"] {
+            --bg-gradient: linear-gradient(135deg, #2b1e1a 0%, #4a3525 50%, #1a100c 100%);
+            --primary-accent: linear-gradient(135deg, #8c6d58 0%, #5c4033 100%);
+            --accent-glow: #c4a482;
+            --text-main: #f5f0eb;
         }
 
-        /* الشكل 4: Sunset Crimson */
-        [data-theme="theme-4"] {
-            --bg-gradient: linear-gradient(135deg, #450a0a 0%, #7f1d1d 50%, #3f0707 100%);
-            --glass-bg: rgba(239, 68, 68, 0.08);
-            --glass-card: rgba(255, 255, 255, 0.07);
-            --glass-border: rgba(248, 113, 113, 0.25);
-            --primary-accent: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-            --accent-glow: #ef4444;
-            --text-main: #fef2f2;
-            --text-muted: #fca5a5;
-            --card-flip-bg: #991b1b;
+        [data-theme="theme-blackwhite"] {
+            --bg-gradient: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #0a0a0a 100%);
+            --primary-accent: linear-gradient(135deg, #ffffff 0%, #a3a3a3 100%);
+            --accent-glow: #ffffff;
+            --text-main: #ffffff;
+            --text-muted: #a3a3a3;
+            --card-flip-bg: #262626;
         }
 
-        /* الشكل 5: Royal Violet */
-        [data-theme="theme-5"] {
-            --bg-gradient: linear-gradient(135deg, #2e1065 0%, #4c1d95 50%, #1e1b4b 100%);
-            --glass-bg: rgba(168, 85, 247, 0.08);
-            --glass-card: rgba(255, 255, 255, 0.07);
-            --glass-border: rgba(192, 132, 252, 0.25);
-            --primary-accent: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);
-            --accent-glow: #a855f7;
-            --text-main: #faf5ff;
-            --text-muted: #e9d5ff;
-            --card-flip-bg: #581c87;
-        }
-
-        /* الشكل 6: Ocean Cyan */
-        [data-theme="theme-6"] {
-            --bg-gradient: linear-gradient(135deg, #083344 0%, #164e63 50%, #0c4a6e 100%);
-            --glass-bg: rgba(6, 182, 212, 0.08);
-            --glass-card: rgba(255, 255, 255, 0.07);
-            --glass-border: rgba(103, 232, 249, 0.25);
+        [data-theme="theme-cyan"] {
+            --bg-gradient: linear-gradient(135deg, #083344 0%, #164e63 50%, #042f2e 100%);
             --primary-accent: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
-            --accent-glow: #06b6d4;
+            --accent-glow: #22d3ee;
             --text-main: #ecfeff;
-            --text-muted: #a5f3fc;
             --card-flip-bg: #155e75;
+        }
+
+        /* ثيم رمضان الثقافي والروحاني */
+        [data-theme="theme-ramadan"] {
+            --bg-gradient: radial-gradient(circle, #1e1b4b 0%, #0f172a 70%, #020617 100%);
+            --glass-bg: rgba(251, 191, 36, 0.08);
+            --primary-accent: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            --accent-glow: #fbbf24;
+            --text-main: #fef3c7;
+            --card-flip-bg: #312e81;
+            background-image: url('https://images.unsplash.com/photo-1564507592333-c60657eea523?q=80&w=1200&auto=format&fit=crop');
+            background-blend-mode: overlay;
+            background-size: cover;
         }
 
         * {
@@ -113,40 +85,44 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
             padding: 20px;
             direction: rtl;
             overflow-x: hidden;
-            transition: background var(--transition-speed) ease;
+            transition: all var(--transition-speed) ease;
         }
 
-        /* 🏷️ شريط هامش معلومات الثيم والتحديث التلقائي */
+        /* 🌟 المؤثرات التفاعلية للترويسة */
         .theme-status-bar {
             width: 100%;
-            max-width: 950px;
+            max-width: 1000px;
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
             backdrop-filter: blur(15px);
-            border-radius: 16px;
-            padding: 12px 24px;
+            border-radius: 20px;
+            padding: 14px 24px;
             margin-bottom: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-size: 13px;
             font-weight: 700;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: pulseGlow 4s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 15px rgba(245, 158, 11, 0.2); }
+            100% { box-shadow: 0 0 30px rgba(6, 182, 212, 0.4); }
         }
 
         .theme-badge {
             background: var(--primary-accent);
-            padding: 4px 12px;
+            padding: 5px 14px;
             border-radius: 20px;
             color: #fff;
-            box-shadow: 0 0 10px var(--accent-glow);
+            box-shadow: 0 0 12px var(--accent-glow);
         }
 
-        /* 🔒 اللوحة الزجاجية الرئيسية */
         .glass-panel {
             background: var(--glass-bg);
             backdrop-filter: blur(25px);
@@ -155,33 +131,34 @@
             border-radius: 32px;
             padding: 35px 25px;
             width: 100%;
-            max-width: 950px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            max-width: 1000px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
             text-align: center;
-            position: relative;
             margin-bottom: 25px;
+            position: relative;
+            transition: all 0.5s ease;
         }
 
         .main-title {
-            font-size: 26px;
-            font-weight: 800;
+            font-size: 28px;
+            font-weight: 900;
             margin-bottom: 8px;
-            color: var(--text-main);
-            text-shadow: 0 2px 10px var(--accent-glow);
+            text-shadow: 0 2px 15px var(--accent-glow);
+            letter-spacing: -0.5px;
         }
 
         .subtitle {
             font-size: 14px;
             color: var(--text-muted);
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
-        /* 🗓️ تقويم أوراق العدادات التفاعلية (Flip Calendar Effect) */
+        /* 🗓️ العدادات وساعات الفليب التفاعلية */
         .countdown-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
             gap: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .timer-card {
@@ -189,25 +166,25 @@
             border: 1px solid var(--glass-border);
             border-radius: 24px;
             padding: 20px 15px;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
         .timer-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-5px) scale(1.02);
             border-color: var(--accent-glow);
         }
 
         .timer-title {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--text-muted);
-            font-weight: 700;
-            margin-bottom: 15px;
+            font-weight: 800;
+            margin-bottom: 12px;
         }
 
         .flip-clock {
             display: flex;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
             direction: ltr;
         }
 
@@ -219,83 +196,57 @@
 
         .flip-card-inner {
             position: relative;
-            width: 52px;
-            height: 60px;
+            width: 48px;
+            height: 56px;
             background: var(--card-flip-bg);
             border-radius: 10px;
             border: 1px solid var(--glass-border);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-            perspective: 400px;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.4);
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
-        }
-
-        .flip-card-inner::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: rgba(0, 0, 0, 0.4);
-            z-index: 5;
         }
 
         .flip-num {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 900;
             color: #ffffff;
             font-family: monospace;
-            transition: transform 0.3s ease;
-        }
-
-        /* أنيميشن رفع ورقة التقويم */
-        .flip-animate .flip-num {
-            animation: flipUp 0.4s ease-in-out;
-        }
-
-        @keyframes flipUp {
-            0% { transform: rotateX(0deg); opacity: 1; }
-            50% { transform: rotateX(-90deg); opacity: 0.5; }
-            100% { transform: rotateX(0deg); opacity: 1; }
         }
 
         .flip-label {
-            font-size: 11px;
+            font-size: 10px;
             color: var(--text-muted);
-            margin-top: 6px;
+            margin-top: 5px;
             font-weight: 700;
         }
 
-        /* 🌙 قسم رمضان ومواقيت الصلاة */
+        /* 🕌 أقسام الصلاة والفتوى */
         .special-sections {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
         .prayer-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
+            gap: 8px;
             margin-top: 10px;
         }
 
         .prayer-item {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(0, 0, 0, 0.2);
             padding: 8px;
             border-radius: 12px;
             border: 1px solid var(--glass-border);
-            text-align: center;
         }
 
         .prayer-name { font-size: 11px; color: var(--text-muted); }
-        .prayer-time { font-size: 13px; font-weight: 800; color: #fff; }
+        .prayer-time { font-size: 13px; font-weight: 800; }
 
-        /* الأزرار الاحترافية */
+        /* الأزرار العصرية */
         .action-btn {
             background: var(--primary-accent);
             color: white;
@@ -306,13 +257,23 @@
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
             font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
         }
 
         .action-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 25px var(--accent-glow);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px var(--accent-glow);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+            border: 1px solid var(--glass-border);
         }
 
         .btn-group {
@@ -323,17 +284,11 @@
             margin-top: 20px;
         }
 
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.08);
-            color: var(--text-main);
-            border: 1px solid var(--glass-border);
-        }
-
-        /* 💻 لوحة التحكم وشاشة التقارير والدوائر */
+        /* 💻 لوحة التحكم المتقدمة وشبكة الأيام */
         #mainApp {
             display: none;
             width: 100%;
-            max-width: 950px;
+            max-width: 1000px;
         }
 
         .financial-summary {
@@ -349,19 +304,16 @@
             gap: 15px;
         }
 
-        .fin-box {
-            text-align: center;
-        }
-
         .fin-box .val {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 900;
             color: #10b981;
         }
 
+        /* شبكة دوائر الأيام المتطورة */
         .tracker-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
             gap: 15px;
             background: var(--glass-bg);
             backdrop-filter: blur(25px);
@@ -380,77 +332,140 @@
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 8px;
+            text-align: center;
+            position: relative;
         }
 
         .day-circle:hover {
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(3deg);
             border-color: var(--accent-glow);
-            box-shadow: 0 0 15px var(--accent-glow);
+            box-shadow: 0 0 20px var(--accent-glow);
         }
 
         .day-circle.recorded-500 {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            background: linear-gradient(135deg, #10b981 0%, #047857 100%);
             border-color: #34d399;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
         }
 
         .day-circle.recorded-300 {
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-            border-color: #60a5fa;
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+            border-color: #38bdf8;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
         }
 
-        .circle-label { font-size: 10px; color: rgba(255,255,255,0.8); }
-        .circle-num { font-size: 16px; font-weight: 800; color: #ffffff; }
+        .circle-dayname { font-size: 9px; opacity: 0.8; font-weight: 700; }
+        .circle-num { font-size: 15px; font-weight: 900; color: #ffffff; }
+        .circle-hijri { font-size: 9px; color: #fde047; font-weight: 800; }
+        .circle-greg { font-size: 8px; opacity: 0.7; }
+        .circle-val { font-size: 10px; font-weight: 900; margin-top: 2px; }
 
-        .hidden { display: none !important; }
+        /* معرض الصور الشهري في أسفل الصفحة */
+        .monthly-gallery {
+            width: 100%;
+            max-width: 1000px;
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 15px;
+            text-align: center;
+            backdrop-filter: blur(15px);
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .gallery-title {
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        /* نافذة التقرير الذكي Popup */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: var(--card-flip-bg);
+            border: 1px solid var(--glass-border);
+            padding: 30px;
+            border-radius: 28px;
+            max-width: 500px;
+            width: 90%;
+            text-align: right;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+        }
     </style>
 </head>
 <body>
 
-    <!-- 🏷️ شريط معلومات تغيير الواجهة التلقائي -->
+    <!-- 🏷️ شريط معلومات الواجهة والتغييرات -->
     <div class="theme-status-bar">
         <div>
-            الشكل الحالي: <span class="theme-badge" id="themeBadge">1 / 6</span>
+            الشكل الحالي: <span class="theme-badge" id="themeBadge">كافيه / أبيض / أسود</span>
         </div>
         <div>
-            ⏳ متبقي على تغير الواجهة القادمة: <span id="themeCountdown" style="color:var(--text-main);">00d 00h 00m</span>
+            ⏳ متبقي على المظهر الشهر القادم: <span id="themeCountdown" style="color:var(--accent-glow);">00d 00h 00m</span>
         </div>
     </div>
 
-    <!-- 🔒 شاشة القفل والعدادات -->
+    <!-- 🔒 شاشة القفل والعدادات الرئيسية -->
     <div id="lockScreen" class="glass-panel">
-        <div class="main-title">🔒 نظام المتابعة المشفر والأمن 2026</div>
-        <div class="subtitle">يتم تحديث البيانات بالثواني مع التشفير وحساب الميزانية المالية.</div>
+        <div class="main-title">🔒 نظام المتابعة الرقمي والتقارير الذكية 2026-2027</div>
+        <div class="subtitle">متابعة دقيقة، إحصائيات مستمرة، وتحديث مواقيت الصلاة تلقائياً.</div>
         
         <div class="countdown-grid">
-            <!-- 1. عداد بداية البرنامج -->
+            <!-- 1. عداد المتبقي على تاريخ 20/07/2027 -->
             <div class="timer-card">
-                <div class="timer-title">⏳ المتبقي على انطلاق البرنامج رسميًا</div>
-                <div class="flip-clock" id="clock-start">
-                    <div class="flip-unit"><div class="flip-card-inner"><span class="flip-num" id="p-day">00</span></div><span class="flip-label">أيام</span></div>
-                    <div class="flip-unit"><div class="flip-card-inner"><span class="flip-num" id="p-hour">00</span></div><span class="flip-label">ساعات</span></div>
-                    <div class="flip-unit"><div class="flip-card-inner"><span class="flip-num" id="p-min">00</span></div><span class="flip-label">دقائق</span></div>
-                    <div class="flip-unit"><div class="flip-card-inner"><span class="flip-num" id="p-sec">00</span></div><span class="flip-label">ثواني</span></div>
+                <div class="timer-title">🎯 المتبقي على يوم الاستحقاق (20/07/2027)</div>
+                <div class="flip-clock">
+                    <div class="flip-unit"><div class="flip-card-inner"><span class="flip-num" id="t1-day">00</span></div><span class="flip-label">أيام</span></div>
+                    <div class="flip-unit"><div class="flip-card-inner"><span class="flip-num" id="t1-hour">00</span></div><span class="flip-label">ساعات</span></div>
+                    <div class="flip-unit"><div class="flip-card-inner"><span class="flip-num" id="t1-min">00</span></div><span class="flip-label">دقائق</span></div>
+                    <div class="flip-unit"><div class="flip-card-inner"><span class="flip-num" id="t1-sec">00</span></div><span class="flip-label">ثواني</span></div>
                 </div>
             </div>
 
-            <!-- 2. عداد نهاية البرنامج -->
+            <!-- 2. عداد انتهاء الشهر الهجري الحالي -->
             <div class="timer-card">
-                <div class="timer-title">🏁 المتبقي على نهاية البرنامج بالكامل</div>
-                <div class="flip-clock" id="clock-end">
-                    <div class="flip-unit"><div class="flip-card-inner"><span class="flip-num" id="f-day">00</span></div><span class="flip-label">أيام</span></div>
-                    <div class="flip-unit"><div class="flip-card-inner"><span class="flip-num" id="f-hour">00</span></div><span class="flip-label">ساعات</span></div>
-                    <div class="flip-unit"><div class="flip-card-inner"><span class="flip-num" id="f-min">00</span></div><span class="flip-label">دقائق</span></div>
-                    <div class="flip-unit"><div class="flip-card-inner"><span class="flip-num" id="f-sec">00</span></div><span class="flip-label">ثواني</span></div>
+                <div class="timer-title">🌙 المتبقي على انتهاء الشهر الهجري الحالي</div>
+                <div class="flip-clock">
+                    <div class="flip-unit"><div class="flip-card-inner"><span class="flip-num" id="th-day">00</span></div><span class="flip-label">أيام</span></div>
+                    <div class="flip-unit"><div class="flip-card-inner"><span class="flip-num" id="th-hour">00</span></div><span class="flip-label">ساعات</span></div>
+                    <div class="flip-unit"><div class="flip-card-inner"><span class="flip-num" id="th-min">00</span></div><span class="flip-label">دقائق</span></div>
+                    <div class="flip-unit"><div class="flip-card-inner"><span class="flip-num" id="th-sec">00</span></div><span class="flip-label">ثواني</span></div>
                 </div>
             </div>
         </div>
 
-        <!-- 🌙 أقسام رمضان ومواقيت الصلاة -->
+        <!-- 🌙 عداد رمضان ومواقيت الصلاة ودار الإفتاء -->
         <div class="special-sections">
             <!-- عداد رمضان -->
             <div class="timer-card">
-                <div class="timer-title">🌙 المتبقي على شهر رمضان المبارك</div>
+                <div class="timer-title">✨ المتبقي على شهر رمضان المبارك</div>
                 <div class="flip-clock">
                     <div class="flip-unit"><div class="flip-card-inner"><span class="flip-num" id="r-day">00</span></div><span class="flip-label">أيام</span></div>
                     <div class="flip-unit"><div class="flip-card-inner"><span class="flip-num" id="r-hour">00</span></div><span class="flip-label">ساعات</span></div>
@@ -459,155 +474,199 @@
                 </div>
             </div>
 
-            <!-- مواقيت الصلاة -->
+            <!-- مواقيت الصلاة والربط بدار الإفتاء -->
             <div class="timer-card">
-                <div class="timer-title">🕌 مواقيت الصلاة اليومية (مصر)</div>
+                <div class="timer-title">🕌 مواقيت الصلاة (القاهرة - دار الإفتاء المصرية)</div>
                 <div class="prayer-grid">
-                    <div class="prayer-item"><div class="prayer-name">الفجر</div><div class="prayer-time" id="pr-fajr">04:20</div></div>
-                    <div class="prayer-item"><div class="prayer-name">الشروق</div><div class="prayer-time" id="pr-sunrise">05:55</div></div>
-                    <div class="prayer-item"><div class="prayer-name">الظهر</div><div class="prayer-time" id="pr-dhuhr">12:00</div></div>
-                    <div class="prayer-item"><div class="prayer-name">العصر</div><div class="prayer-time" id="pr-asr">15:30</div></div>
-                    <div class="prayer-item"><div class="prayer-name">المغرب</div><div class="prayer-time" id="pr-maghrib">18:45</div></div>
-                    <div class="prayer-item"><div class="prayer-name">العشاء</div><div class="prayer-time" id="pr-isha">20:10</div></div>
+                    <div class="prayer-item"><div class="prayer-name">الفجر</div><div class="prayer-time" id="pr-fajr">--:--</div></div>
+                    <div class="prayer-item"><div class="prayer-name">الشروق</div><div class="prayer-time" id="pr-sunrise">--:--</div></div>
+                    <div class="prayer-item"><div class="prayer-name">الظهر</div><div class="prayer-time" id="pr-dhuhr">--:--</div></div>
+                    <div class="prayer-item"><div class="prayer-name">العصر</div><div class="prayer-time" id="pr-asr">--:--</div></div>
+                    <div class="prayer-item"><div class="prayer-name">المغرب</div><div class="prayer-time" id="pr-maghrib">--:--</div></div>
+                    <div class="prayer-item"><div class="prayer-name">العشاء</div><div class="prayer-time" id="pr-isha">--:--</div></div>
+                </div>
+                <div style="margin-top:12px;">
+                    <a href="https://www.dar-alifta.org" target="_blank" class="action-btn btn-secondary" style="font-size:11px; padding:6px 14px;">
+                        🔗 اتصال مباشر بدار الإفتاء المصرية
+                    </a>
                 </div>
             </div>
         </div>
 
-        <div style="margin-top:25px;">
-            <button class="action-btn" onclick="requestNotificationPermission()">🔔 تفعيل نظام الإشعارات والنصائح</button>
-        </div>
-        
         <div class="btn-group">
-            <button class="action-btn btn-secondary" id="dailyTestBtn" onclick="triggerDailyNotificationTest()">✉️ بروفا الإشعار اليومي</button>
-            <button class="action-btn btn-secondary" id="reportTestBtn" onclick="triggerReportNotificationTest()">📊 بروفا التقرير والدوائر</button>
+            <button class="action-btn" onclick="openMainDashboard()">
+                📊 فتح التقارير واللوحة الذكية
+            </button>
+            <button class="action-btn btn-secondary" onclick="requestNotificationPermission()">
+                🔔 تفعيل نظام النصائح والرسائل المستمرة
+            </button>
         </div>
     </div>
 
-    <!-- 💻 لوحة التحكم والتقارير المالية -->
+    <!-- 💻 لوحة التحكم وشبكة التوثيق الحقيقية -->
     <div id="mainApp">
         <div class="glass-panel" style="padding:20px;">
-            <h2>📊 التقرير المالي والدوائر التوثيقية</h2>
-            <div style="color:var(--text-muted); font-size:13px; margin-top:5px;">
-                إعادة التشفير التلقائي خلال: <span id="sessionTimer" style="color:#10b981; font-weight:900;">15:00</span>
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;">
+                <h2>📊 لوحة المتابعة والتوثيق المالي اليومي</h2>
+                <button class="action-btn btn-secondary" onclick="closeMainDashboard()">🔒 إغلاق اللوحة</button>
             </div>
         </div>
 
-        <!-- ملخص المبالغ المالية -->
+        <!-- ملخص المبالغ والتقارير الذكية -->
         <div class="financial-summary">
             <div class="fin-box">
-                <div style="font-size:12px; color:var(--text-muted);">إجمالي التوفير المسجل</div>
+                <div style="font-size:12px; color:var(--text-muted);">إجمالي المبلغ المسجل</div>
                 <div class="val" id="totalSavings">0 ج.م</div>
             </div>
             <div class="fin-box">
                 <div style="font-size:12px; color:var(--text-muted);">أيام فئة 500 ج.م</div>
-                <div class="val" style="color:#34d399" id="count500">0 يوم</div>
+                <div class="val" style="color:#10b981" id="count500">0 يوم</div>
             </div>
             <div class="fin-box">
                 <div style="font-size:12px; color:var(--text-muted);">أيام فئة 300 ج.م</div>
-                <div class="val" style="color:#60a5fa" id="count300">0 يوم</div>
+                <div class="val" style="color:#38bdf8" id="count300">0 يوم</div>
             </div>
+            <button class="action-btn" onclick="generateSmartReport()">🧠 إنشاء تقرير ذكي</button>
         </div>
 
-        <!-- شبكة الدوائر -->
+        <!-- شبكة الدوائر اليومية متضمنة التاريخ الهجري والميلادي بالكلمات -->
         <div class="tracker-grid" id="trackerGrid"></div>
     </div>
 
-    <script>
-        // ------------------ 1. الإعدادات والتواريخ ------------------
-        const startDate = new Date(2026, 7, 1); // 1 أغسطس 2026
-        const endDate = new Date(2027, 7, 1);   // 1 أغسطس 2027
-        const ramadanDate = new Date(2027, 1, 8); // التقديري لرمضان 2027 (حسب دار الإفتاء)
-        const daysPerPeriod = 35;
-        let celebrationTriggered = false;
+    <!-- 🖼️ معرض الصور المتغيرة شهرياً -->
+    <div class="monthly-gallery">
+        <div class="gallery-card">
+            <img id="hijriMonthImg" src="" alt="الشهر الهجري">
+            <div class="gallery-title" id="hijriImgTitle">🌙 شهر هجري</div>
+        </div>
+        <div class="gallery-card">
+            <img id="gregMonthImg" src="" alt="الشهر الميلادي">
+            <div class="gallery-title" id="gregImgTitle">📅 شهر ميلادي</div>
+        </div>
+    </div>
 
-        // نصائح طلاب الثانوية العامة
-        const tips = [
-            "💡 نصيحة اليوم: ابدأ بالمواد الصعبة في الصباح عندما يكون عقلك في أعلى درجات التركيز.",
-            "📚 نصيحة اليوم: تنظيم الوقت أهم من عدد ساعات المذاكرة، استخدم طريقة البومودورو (25 دقيقة مذاكرة - 5 استراحة).",
-            "🎯 نصيحة اليوم: الحل الكثير والتدريب على الامتحانات هو السلاح السري للقمة!",
-            "😴 نصيحة اليوم: لا تضحِ بنومك! النوم 7-8 ساعات يثبت المعلومات في الذاكرة طويلة المدى.",
-            "🤲 نصيحة اليوم: حافظ على صلاتك وثق بقدراتك، واستعن بالله دائماً."
+    <!-- النافذة المنبثقة للتقرير الذكي -->
+    <div class="modal" id="smartReportModal">
+        <div class="modal-content">
+            <h3 style="color:var(--accent-glow); margin-bottom:15px;">🧠 التقرير المالي الذكي</h3>
+            <div id="reportText" style="line-height:1.8; font-size:14px;"></div>
+            <br>
+            <button class="action-btn" style="width:100%" onclick="closeReportModal()">حسناً، فهمت</button>
+        </div>
+    </div>
+
+    <script>
+        // ------------------ 1. التواريخ المحددة والأسماء العربية ------------------
+        const targetDate2027 = new Date(2027, 6, 20); // 20 يوليو 2027
+        const ramadan2027 = new Date(2027, 1, 8);    // التقديري لرمضان 2027
+        
+        const hijriMonthsArabic = [
+            "محرم", "صفر", "ربيع الأول", "ربيع الآخر", 
+            "جمادى الأولى", "جمادى الآخرة", "رجب", "شعبان", 
+            "رمضان", "شوال", "ذو القعدة", "ذو الحجة"
         ];
 
-        // ------------------ 2. إدارة الثيمات والتغير التلقائي كل شهر ------------------
-        function updateMonthlyTheme() {
-            const now = new Date();
-            const currentMonth = now.getMonth(); // 0-11
-            const themeIndex = (currentMonth % 6) + 1; // يعطي رقم من 1 إلى 6
-            
-            document.documentElement.setAttribute('data-theme', `theme-${themeIndex}`);
-            document.getElementById('themeBadge').innerText = `الشكل ${themeIndex} / 6`;
+        const gregMonthsArabic = [
+            "يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو",
+            "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"
+        ];
 
-            // حساب الوقت المتبقي لنهاية الشهر
+        const daysArabic = ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
+
+        // الرسائل والنصائح المستمرة
+        const continuousMessages = [
+            "💡 نصيحة اليوم: الاستمرار الصغير اليومي يصنع نتائج جبارة بعد شهر!",
+            "📚 التزامك اليومي هو خطوتك الأولى نحو تحقيق هدفك في 2027.",
+            "🎯 حافظ على التوزان بين الادخار والإنجاز الشخصي.",
+            "🌙 صلاتك في وقتها تنير دربك وتزيد في بركة وقتك ورزقك.",
+            "⚡ المتابعة اليومية المنتظمة تميز المحترفين عن غيرهم!"
+        ];
+
+        // ------------------ 2. إدارة التصميم والشكل التلقائي كل شهر ------------------
+        function applyMonthlyThemeAndLayout() {
+            const now = new Date();
+            const month = now.getMonth();
+
+            // التحقق مما إذا كنا قريبين أو في شهر رمضان
+            if (month === 1 || month === 2) { 
+                document.documentElement.setAttribute('data-theme', 'theme-ramadan');
+                document.getElementById('themeBadge').innerText = '✨ أجواء رمضانية مباركة';
+            } else if (month % 3 === 0) {
+                document.documentElement.setAttribute('data-theme', 'theme-cafe');
+                document.getElementById('themeBadge').innerText = '☕ كافيه دافئ';
+            } else if (month % 3 === 1) {
+                document.documentElement.setAttribute('data-theme', 'theme-blackwhite');
+                document.getElementById('themeBadge').innerText = 'عصري (أبيض وأسود)';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'theme-cyan');
+                document.getElementById('themeBadge').innerText = '🌐 لبني هادئ';
+            }
+
+            // عداد تغير مظهر الشهر القادم
             const nextMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1);
             const diff = nextMonth - now;
-
             const d = Math.floor(diff / (1000 * 60 * 60 * 24));
             const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-
             document.getElementById('themeCountdown').innerText = `${d} يوم و ${h} ساعة و ${m} دقيقة`;
+
+            // تحديث صور الشهر الهجري والميلادي في أسفل الصفحة
+            updateMonthlyImages(month);
         }
 
-        // ------------------ 3. تأثير أنيميشن الورقة (Flip Effect) ------------------
-        function updateFlipValue(id, newValue) {
+        function updateMonthlyImages(monthIndex) {
+            const hijriImg = document.getElementById('hijriMonthImg');
+            const gregImg = document.getElementById('gregMonthImg');
+
+            // صور تعبيرية ديناميكية تستجيب للشهر
+            hijriImg.src = `https://picsum.photos/400/200?random=${monthIndex + 10}`;
+            gregImg.src = `https://picsum.photos/400/200?random=${monthIndex + 50}`;
+
+            document.getElementById('hijriImgTitle').innerText = `🌙 رمزية الشهر الهجري الحالي (${hijriMonthsArabic[monthIndex % 12]})`;
+            document.getElementById('gregImgTitle').innerText = `📅 رمزية شهر (${gregMonthsArabic[monthIndex]}) الميلادي`;
+        }
+
+        // ------------------ 3. العدادات التنازلية ودعم ساعة الفليب ------------------
+        function updateFlipValue(id, val) {
             const el = document.getElementById(id);
-            if (!el) return;
-            const formatted = String(newValue).padStart(2, '0');
-            if (el.innerText !== formatted) {
-                const parent = el.closest('.flip-card-inner');
-                if (parent) {
-                    parent.classList.remove('flip-animate');
-                    void parent.offsetWidth; // Trigger reflow
-                    parent.classList.add('flip-animate');
-                }
-                el.innerText = formatted;
-            }
+            if (el) el.innerText = String(val).padStart(2, '0');
         }
 
-        // ------------------ 4. العدادات التنازلية بالثواني ------------------
-        function updateAllTimers() {
+        function updateTimers() {
             const now = new Date();
 
-            // أ) المتبقي على بداية البرنامج
-            let startDiff = startDate - now;
-            if (startDiff <= 0) {
-                ['p-day','p-hour','p-min','p-sec'].forEach(id => updateFlipValue(id, 0));
-            } else {
-                updateFlipValue('p-day', Math.floor(startDiff / (1000 * 60 * 60 * 24)));
-                updateFlipValue('p-hour', Math.floor((startDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
-                updateFlipValue('p-min', Math.floor((startDiff % (1000 * 60 * 60)) / (1000 * 60)));
-                updateFlipValue('p-sec', Math.floor((startDiff % (1000 * 60)) / 1000));
+            // أ) عداد المتبقي على 20/07/2027
+            let diff1 = targetDate2027 - now;
+            if (diff1 > 0) {
+                updateFlipValue('t1-day', Math.floor(diff1 / (1000 * 60 * 60 * 24)));
+                updateFlipValue('t1-hour', Math.floor((diff1 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+                updateFlipValue('t1-min', Math.floor((diff1 % (1000 * 60 * 60)) / (1000 * 60)));
+                updateFlipValue('t1-sec', Math.floor((diff1 % (1000 * 60)) / 1000));
             }
 
-            // ب) المتبقي على نهاية البرنامج
-            let endDiff = endDate - now;
-            if (endDiff <= 0) {
-                ['f-day','f-hour','f-min','f-sec'].forEach(id => updateFlipValue(id, 0));
-                if (!celebrationTriggered) {
-                    confetti({ particleCount: 200, spread: 100, origin: { y: 0.6 } });
-                    celebrationTriggered = true;
-                }
-            } else {
-                updateFlipValue('f-day', Math.floor(endDiff / (1000 * 60 * 60 * 24)));
-                updateFlipValue('f-hour', Math.floor((endDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
-                updateFlipValue('f-min', Math.floor((endDiff % (1000 * 60 * 60)) / (1000 * 60)));
-                updateFlipValue('f-sec', Math.floor((endDiff % (1000 * 60)) / 1000));
+            // ب) عداد انتهاء الشهر الهجري (حساب تقديري بنهاية الشهر)
+            const endHijriMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+            let diffH = endHijriMonth - now;
+            if (diffH > 0) {
+                updateFlipValue('th-day', Math.floor(diffH / (1000 * 60 * 60 * 24)));
+                updateFlipValue('th-hour', Math.floor((diffH % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+                updateFlipValue('th-min', Math.floor((diffH % (1000 * 60 * 60)) / (1000 * 60)));
+                updateFlipValue('th-sec', Math.floor((diffH % (1000 * 60)) / 1000));
             }
 
-            // ج) المتبقي على شهر رمضان
-            let ramadanDiff = ramadanDate - now;
-            if (ramadanDiff > 0) {
-                updateFlipValue('r-day', Math.floor(ramadanDiff / (1000 * 60 * 60 * 24)));
-                updateFlipValue('r-hour', Math.floor((ramadanDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
-                updateFlipValue('r-min', Math.floor((ramadanDiff % (1000 * 60 * 60)) / (1000 * 60)));
-                updateFlipValue('r-sec', Math.floor((ramadanDiff % (1000 * 60)) / 1000));
+            // ج) عداد رمضان
+            let diffR = ramadan2027 - now;
+            if (diffR > 0) {
+                updateFlipValue('r-day', Math.floor(diffR / (1000 * 60 * 60 * 24)));
+                updateFlipValue('r-hour', Math.floor((diffR % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+                updateFlipValue('r-min', Math.floor((diffR % (1000 * 60 * 60)) / (1000 * 60)));
+                updateFlipValue('r-sec', Math.floor((diffR % (1000 * 60)) / 1000));
             }
 
-            updateMonthlyTheme();
+            applyMonthlyThemeAndLayout();
         }
 
-        // ------------------ 5. مواقيت الصلاة (API تلقائي) ------------------
+        // ------------------ 4. ربط مواقيت الصلاة (دار الإفتاء / القاهرة) ------------------
         async function fetchPrayerTimes() {
             try {
                 const res = await fetch('https://api.aladhan.com/v1/timingsByCity?city=Cairo&country=Egypt&method=5');
@@ -621,79 +680,50 @@
                     document.getElementById('pr-maghrib').innerText = t.Maghrib;
                     document.getElementById('pr-isha').innerText = t.Isha;
                 }
-            } catch (err) {
-                console.log("استخدام المواقيت الافتراضية");
+            } catch (e) {
+                console.log("استخدام التوقيت المحلي");
             }
         }
 
-        // ------------------ 6. الإشعارات والربط المتتابع نصائح الثانوية ------------------
-        function requestNotificationPermission() {
-            if (!("Notification" in window)) {
-                alert("المتصفح لديك لا يدعم الإشعارات.");
-                return;
-            }
-            Notification.requestPermission().then(permission => {
-                if (permission === 'granted') {
-                    alert('✅ تم تنشيط الإشعارات اليومية بنجاح!');
-                    checkMissedNotifications();
-                }
-            });
+        // ------------------ 5. لوحة التحكم الحقيقية وشبكة الدوائر ------------------
+        function openMainDashboard() {
+            document.getElementById('lockScreen').style.display = 'none';
+            document.getElementById('mainApp').style.display = 'block';
+            renderCircles();
         }
 
-        function checkMissedNotifications() {
-            let lastDaySeen = parseInt(localStorage.getItem('last_notification_day') || '0');
-            let currentDay = Math.floor(new Date().getTime() / (1000 * 60 * 60 * 24));
-
-            if (lastDaySeen === 0) {
-                localStorage.setItem('last_notification_day', currentDay);
-                return;
-            }
-
-            let missedDays = currentDay - lastDaySeen;
-            if (missedDays > 0) {
-                for (let i = 0; i < missedDays; i++) {
-                    let tipIndex = (lastDaySeen + i) % tips.length;
-                    setTimeout(() => {
-                        new Notification(`🎓 نصيحة ثانوية عامة (فائتة - يوم ${i + 1})`, {
-                            body: tips[tipIndex],
-                            icon: "https://cdn-icons-png.flaticon.com/512/3135/3135755.png"
-                        });
-                    }, i * 3000);
-                }
-                localStorage.setItem('last_notification_day', currentDay);
-            }
+        function closeMainDashboard() {
+            document.getElementById('mainApp').style.display = 'none';
+            document.getElementById('lockScreen').style.display = 'block';
         }
 
-        function triggerDailyNotificationTest() {
-            if (Notification.permission === 'granted') {
-                let randomTip = tips[Math.floor(Math.random() * tips.length)];
-                new Notification("📝 نصيحة ثانوية عامة اليومية + توثيق الفئة المالية", {
-                    body: `${randomTip}\n\nاختر الفئة المالية اليومية (300 ج.م / 500 ج.م):`,
-                    icon: "https://cdn-icons-png.flaticon.com/512/3135/3135755.png"
-                });
-            } else {
-                alert("يرجى تفعيل الإشعارات أولاً.");
-            }
-        }
-
-        // ------------------ 7. التقرير المالي والدوائر ------------------
         function recordFinancial(day, amount) {
-            let records = JSON.parse(localStorage.getItem('financial_records') || '{}');
+            let records = JSON.parse(localStorage.getItem('financial_records_v2') || '{}');
             records[day] = amount;
-            localStorage.setItem('financial_records', JSON.stringify(records));
+            localStorage.setItem('financial_records_v2', JSON.stringify(records));
             renderCircles();
         }
 
         function renderCircles() {
             const grid = document.getElementById('trackerGrid');
             grid.innerHTML = '';
-            let records = JSON.parse(localStorage.getItem('financial_records') || '{}');
+            let records = JSON.parse(localStorage.getItem('financial_records_v2') || '{}');
 
             let total = 0, count500 = 0, count300 = 0;
+            const today = new Date();
 
-            for (let i = 1; i <= daysPerPeriod; i++) {
+            // بناء 30 يوم متقسمة كأيام حقيقية
+            for (let i = 1; i <= 30; i++) {
                 const circle = document.createElement('div');
                 circle.className = 'day-circle';
+
+                // حساب التواريخ لكل دائرة
+                let simDate = new Date(today.getFullYear(), today.getMonth(), i);
+                let dayName = daysArabic[simDate.getDay()];
+                let gregMonth = gregMonthsArabic[simDate.getMonth()];
+                
+                // تقدير الشهر الهجري بالعربية (مثل رجب أو شعبان)
+                let hijriMonthName = hijriMonthsArabic[(simDate.getMonth() + 6) % 12];
 
                 if (records[i] === 500) {
                     circle.classList.add('recorded-500');
@@ -706,16 +736,22 @@
                 }
 
                 circle.innerHTML = `
-                    <div class="circle-label">يوم</div>
-                    <div class="circle-num">${i}</div>
-                    <div style="font-size:9px; font-weight:bold; margin-top:2px;">${records[i] ? records[i] + ' ج.م' : ''}</div>
+                    <div class="circle-dayname">${dayName}</div>
+                    <div class="circle-num">يوم ${i}</div>
+                    <div class="circle-hijri">${hijriMonthName}</div>
+                    <div class="circle-greg">${i} ${gregMonth}</div>
+                    <div class="circle-val">${records[i] ? records[i] + ' ج.م' : '---'}</div>
                 `;
 
-                // التبديل عند الضغط
+                // التبديل السهل الممتع بنقرة واحدة: 500 ثم 300 ثم مسح
                 circle.onclick = () => {
                     if (!records[i]) recordFinancial(i, 500);
                     else if (records[i] === 500) recordFinancial(i, 300);
-                    else delete records[i], localStorage.setItem('financial_records', JSON.stringify(records)), renderCircles();
+                    else {
+                        delete records[i];
+                        localStorage.setItem('financial_records_v2', JSON.stringify(records));
+                        renderCircles();
+                    }
                 };
 
                 grid.appendChild(circle);
@@ -726,36 +762,58 @@
             document.getElementById('count300').innerText = `${count300} يوم`;
         }
 
-        function triggerReportNotificationTest() {
-            let expiryTime = new Date().getTime() + (15 * 60 * 1000); // 15 دقيقة
-            localStorage.setItem('external_session_expiry', expiryTime);
-            checkAccess();
+        // ------------------ 6. تقارير ذكية ونظام إشعارات مستمر ------------------
+        function generateSmartReport() {
+            let records = JSON.parse(localStorage.getItem('financial_records_v2') || '{}');
+            let keys = Object.keys(records);
+            let total = Object.values(records).reduce((a, b) => a + b, 0);
+
+            let msg = `<b>📈 ملخص أداء الادخار الذكي:</b><br><br>`;
+            msg += `• عدد الأيام المسجلة: <b>${keys.length} من أصل 30 يوم</b>.<br>`;
+            msg += `• الإجمالي المجمع: <b>${total.toLocaleString()} جنيه مصري</b>.<br>`;
+            
+            if (total >= 10000) {
+                msg += `<br>🌟 <b>أداء ممتاز جداً!</b> أنت تسير بمعدل استثنائي لتحقيق هدفك قبل 2027.`;
+            } else if (total > 0) {
+                msg += `<br>👍 <b>بداية جيدة!</b> حاول زيادة أيام فئة 500 ج.م للوصول لأقصى إنتاجية.`;
+            } else {
+                msg += `<br>💡 لم تسجل أي مبالغ بعد. اضغط على دوائر الأيام وابدأ التوثيق فوراً!`;
+            }
+
+            document.getElementById('reportText').innerHTML = msg;
+            document.getElementById('smartReportModal').style.display = 'flex';
         }
 
-        function checkAccess() {
-            const now = new Date();
-            let sessionExpiry = localStorage.getItem('external_session_expiry');
+        function closeReportModal() {
+            document.getElementById('smartReportModal').style.display = 'none';
+        }
 
-            if (sessionExpiry && now.getTime() < parseInt(sessionExpiry)) {
-                document.getElementById('mainApp').style.display = 'block';
-                document.getElementById('lockScreen').style.display = 'none';
-                
-                let timeLeft = Math.max(0, Math.ceil((parseInt(sessionExpiry) - now.getTime()) / 1000));
-                let minutes = Math.floor(timeLeft / 60).toString().padStart(2, '0');
-                let seconds = (timeLeft % 60).toString().padStart(2, '0');
-                document.getElementById('sessionTimer').innerText = `${minutes}:${seconds}`;
-            } else {
-                document.getElementById('mainApp').style.display = 'none';
-                document.getElementById('lockScreen').style.display = 'block';
+        function requestNotificationPermission() {
+            if (!("Notification" in window)) {
+                alert("المتصفح لا يدعم الإشعارات.");
+                return;
+            }
+            Notification.requestPermission().then(perm => {
+                if (perm === 'granted') {
+                    alert('✅ تم تفعيل الرسائل والنصائح المستمرة بنجاح!');
+                    sendContinuousNotification();
+                }
+            });
+        }
+
+        function sendContinuousNotification() {
+            if (Notification.permission === 'granted') {
+                let randomMsg = continuousMessages[Math.floor(Math.random() * continuousMessages.length)];
+                new Notification("🔒 نظام المتابعة المستمر", {
+                    body: randomMsg,
+                    icon: "https://cdn-icons-png.flaticon.com/512/3135/3135755.png"
+                });
             }
         }
 
-        // ------------------ 8. بدء التشغيل التلقائي ------------------
-        setInterval(updateAllTimers, 1000);
-        setInterval(checkAccess, 1000);
-        
-        updateAllTimers();
-        renderCircles();
+        // ------------------ 7. التشغيل والتحديث الدوري ------------------
+        setInterval(updateTimers, 1000);
+        updateTimers();
         fetchPrayerTimes();
     </script>
 </body>
